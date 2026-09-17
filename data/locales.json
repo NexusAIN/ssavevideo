@@ -1,0 +1,717 @@
+{
+  "meta": {
+    "comment": "Progressive-localization catalog. `ui` strings are exact per locale; `content` holds parameterized templates where {platform} is the localized platform name, so every locale renders a fully in-language page (never a half-English one) even before hand-written per-platform long copy exists. English remains the canonical pSEO locale and is the target of x-default and of the unprefixed URLs.",
+    "default_locale": "en",
+    "placeholder_note": "Placeholders: {platform} {Platform} {quality} {brand}"
+  },
+  "locales": [
+    {
+      "code": "en",
+      "hreflang": "en",
+      "og_locale": "en_US",
+      "label": "English",
+      "native_label": "English",
+      "dir": "ltr",
+      "prefix": "",
+      "sitemap_priority": "1.0",
+      "seo_weight": "canonical"
+    },
+    {
+      "code": "es",
+      "hreflang": "es",
+      "og_locale": "es_ES",
+      "label": "Español",
+      "native_label": "Español",
+      "dir": "ltr",
+      "prefix": "es",
+      "sitemap_priority": "0.9",
+      "seo_weight": "alternate"
+    },
+    {
+      "code": "fr",
+      "hreflang": "fr",
+      "og_locale": "fr_FR",
+      "label": "Français",
+      "native_label": "Français",
+      "dir": "ltr",
+      "prefix": "fr",
+      "sitemap_priority": "0.9",
+      "seo_weight": "alternate"
+    },
+    {
+      "code": "ar",
+      "hreflang": "ar",
+      "og_locale": "ar_AR",
+      "label": "العربية",
+      "native_label": "العربية",
+      "dir": "rtl",
+      "prefix": "ar",
+      "sitemap_priority": "0.9",
+      "seo_weight": "alternate"
+    }
+  ],
+  "ui": {
+    "en": {
+      "nav.home": "Home",
+      "nav.tools": "Downloaders",
+      "nav.guides": "Guides",
+      "nav.supported": "All platforms",
+      "nav.lang": "Language",
+      "nav.lang_hint": "Choose your language",
+      "theme.toggle": "Toggle dark mode",
+      "theme.dark": "Dark",
+      "theme.light": "Light",
+      "a11y.skip": "Skip to main content",
+      "a11y.results": "Download results",
+      "hero.badge": "Free · no signup · no watermark",
+      "hero.eyebrow": "Paste a link",
+      "hero.input_label": "Video link",
+      "hero.paste": "Paste",
+      "hero.pasted": "Link pasted",
+      "hero.download": "Download",
+      "hero.analyzing": "Reading the stream manifest…",
+      "hero.hint": "MP4, WebM and audio links. Public videos only.",
+      "hero.examples": "Try a link from",
+      "hero.secure": "HTTPS only · we never store the file",
+      "error.title": "That link did not work",
+      "error.retry": "Try again",
+      "error.empty": "Paste a video link first.",
+      "error.invalid_url": "That does not look like a valid http(s) link. Copy the full URL of the post.",
+      "error.unsupported": "This host is not supported yet. SsaveVideo covers YouTube, TikTok, Instagram, Facebook, Reddit, Pinterest, Threads and X.",
+      "error.private": "The video is private, age-restricted or requires a login, so it cannot be read by an anonymous request.",
+      "error.notfound": "The video was not found. It may have been deleted or the link is incomplete.",
+      "error.rate": "You are sending too many lookups. Wait a moment and try again.",
+      "error.network": "The platform did not answer in time. Try again in a few seconds.",
+      "error.timeout": "The platform took too long to respond. Try again.",
+      "error.generic": "Something went wrong while reading that link. Try again or use another URL.",
+      "results.title": "Choose a file to save",
+      "results.subtitle": "Direct links from the platform's own CDN. They expire, so download now.",
+      "results.channel": "Channel",
+      "results.duration": "Duration",
+      "results.size": "Size",
+      "results.quality": "Quality",
+      "results.bitrate": "Bitrate",
+      "results.container": "Format",
+      "results.fps": "Frame rate",
+      "results.video_only": "Video only — no sound",
+      "results.merged": "Video + audio merged",
+      "results.audio": "Audio track",
+      "results.download": "Download",
+      "results.copy": "Copy link",
+      "results.copied": "Copied",
+      "results.howto": "Long-press on mobile to save; right-click → Save link as on desktop.",
+      "results.elapsed": "resolved in {ms} ms",
+      "results.empty": "No downloadable media was found for this link.",
+      "results.fmt_note": "These are the exact streams the platform publishes; nothing is converted on our servers.",
+      "steps.eyebrow": "How it works",
+      "steps.title": "Download in three steps",
+      "steps.subtitle": "No account, no app, no settings to configure. Copy, paste, save.",
+      "features.eyebrow": "Why SsaveVideo",
+      "features.title": "Built to be the fastest way to save a video",
+      "related.title": "Related downloaders",
+      "related.subtitle": "Jump to the tool built for that exact format.",
+      "platforms.eyebrow": "Supported",
+      "platforms.title": "Every network we cover",
+      "platforms.subtitle": "Each page is tuned for that platform: right qualities, right caveats, right answers.",
+      "faq.eyebrow": "FAQ",
+      "faq.title": "Frequently asked questions",
+      "faq.subtitle": "Straight answers about quality, legality, safety and failures.",
+      "cta.title": "Paste your first link",
+      "cta.subtitle": "It takes about two seconds and nothing is installed on your device.",
+      "cta.button": "Go to the downloader",
+      "footer.tagline": "A fast, free downloader for public videos. No app, no account, no watermark.",
+      "footer.tools": "Downloaders",
+      "footer.guides": "Guides & help",
+      "footer.legal": "Legal",
+      "footer.company": "Product",
+      "footer.contact": "Contact",
+      "footer.contact_text": "Report a link problem",
+      "footer.status": "Service status",
+      "footer.dmca_note": "SsaveVideo does not host or store any media. We only return public links supplied by the source platform and remove tools from indexing on valid notice.",
+      "footer.rights": "© {year} {brand}. All trademarks belong to their owners.",
+      "footer.made": "Built for people who just want the file.",
+      "legal.terms": "Terms of Service",
+      "legal.privacy": "Privacy Policy",
+      "legal.dmca": "DMCA / Copyright",
+      "legal.updated": "Last updated {date}",
+      "meta.canonical_note": "Canonical URL",
+      "cookie.note": "We use no cookies and no trackers. By using SsaveVideo you accept the Terms.",
+      "cookie.ok": "Understood",
+      "badge.free": "Free forever",
+      "badge.nolimit": "No daily quota",
+      "badge.nostore": "No file stored",
+      "badge.nosignup": "No signup",
+      "badge.hdsupport": "HD & full resolution",
+      "badge.mobile": "Works on mobile",
+      "guide.eyebrow": "Guide",
+      "guide.read_steps": "See the download steps",
+      "guide.related": "Tools mentioned in this guide",
+      "guide.toc": "On this page",
+      "notfound.title": "Page not found",
+      "notfound.subtitle": "That tool does not exist yet. Pick a platform below instead.",
+      "notfound.home": "Back to the downloader",
+      "error500.title": "We hit a snag",
+      "error500.subtitle": "Nothing is wrong with your link: our resolver hit an internal error. Try again in a few seconds."
+    },
+    "es": {
+      "nav.home": "Inicio",
+      "nav.tools": "Descargadores",
+      "nav.guides": "Guías",
+      "nav.supported": "Todas las plataformas",
+      "nav.lang": "Idioma",
+      "nav.lang_hint": "Elige tu idioma",
+      "theme.toggle": "Cambiar a modo oscuro",
+      "theme.dark": "Oscuro",
+      "theme.light": "Claro",
+      "a11y.skip": "Saltar al contenido principal",
+      "a11y.results": "Resultados de descarga",
+      "hero.badge": "Gratis · sin registro · sin marca de agua",
+      "hero.eyebrow": "Pega un enlace",
+      "hero.input_label": "Enlace del vídeo",
+      "hero.paste": "Pegar",
+      "hero.pasted": "Enlace pegado",
+      "hero.download": "Descargar",
+      "hero.analyzing": "Leyendo el manifiesto de streams…",
+      "hero.hint": "Enlaces MP4, WebM y de audio. Solo vídeos públicos.",
+      "hero.examples": "Prueba con un enlace de",
+      "hero.secure": "Solo HTTPS · nunca guardamos el archivo",
+      "error.title": "Ese enlace no ha funcionado",
+      "error.retry": "Reintentar",
+      "error.empty": "Pega primero el enlace del vídeo.",
+      "error.invalid_url": "No parece un enlace http(s) válido. Copia la URL completa de la publicación.",
+      "error.unsupported": "Este sitio aún no es compatible. SsaveVideo cubre YouTube, TikTok, Instagram, Facebook, Reddit, Pinterest, Threads y X.",
+      "error.private": "El vídeo es privado, tiene restricción de edad o exige iniciar sesión, así no puede leerse de forma anónima.",
+      "error.notfound": "No se ha encontrado el vídeo. Quizá lo borraron o el enlace está incompleto.",
+      "error.rate": "Estás haciendo demasiadas búsquedas. Espera un momento e inténtalo otra vez.",
+      "error.network": "La plataforma no ha respondido a tiempo. Vuelve a intentarlo en unos segundos.",
+      "error.timeout": "La plataforma ha tardado demasiado en responder. Inténtalo de nuevo.",
+      "error.generic": "Algo ha fallado al leer ese enlace. Prueba con otra URL.",
+      "results.title": "Elige qué archivo guardar",
+      "results.subtitle": "Enlaces directos al CDN de la plataforma. Caducan, así que descarga ya.",
+      "results.channel": "Canal",
+      "results.duration": "Duración",
+      "results.size": "Tamaño",
+      "results.quality": "Calidad",
+      "results.bitrate": "Bits por segundo",
+      "results.container": "Formato",
+      "results.fps": "Cuadros por segundo",
+      "results.video_only": "Solo vídeo — sin audio",
+      "results.merged": "Vídeo y audio unidos",
+      "results.audio": "Pista de audio",
+      "results.download": "Descargar",
+      "results.copy": "Copiar enlace",
+      "results.copied": "Copiado",
+      "results.howto": "Mantén pulsado en el móvil para guardar; clic derecho → Guardar como en el escritorio.",
+      "results.elapsed": "resuelto en {ms} ms",
+      "results.empty": "No se ha encontrado ningún medio descargable para este enlace.",
+      "results.fmt_note": "Son los streams exactos que publica la plataforma; nada se convierte en nuestros servidores.",
+      "steps.eyebrow": "Cómo funciona",
+      "steps.title": "Descarga en tres pasos",
+      "steps.subtitle": "Sin cuenta, sin app y sin ajustes. Copia, pega y guarda.",
+      "features.eyebrow": "Por qué SsaveVideo",
+      "features.title": "Hecho para ser la forma más rápida de guardar un vídeo",
+      "related.title": "Descargadores relacionados",
+      "related.subtitle": "Salta a la herramienta pensada para ese formato exacto.",
+      "platforms.eyebrow": "Compatible",
+      "platforms.title": "Todas las redes que cubrimos",
+      "platforms.subtitle": "Cada página está afinada para esa plataforma: calidades, avisos y respuestas correctas.",
+      "faq.eyebrow": "Preguntas frecuentes",
+      "faq.title": "Dudas frecuentes sobre descargas",
+      "faq.subtitle": "Respuestas claras sobre calidad, legalidad, seguridad y errores.",
+      "cta.title": "Pega tu primer enlace",
+      "cta.subtitle": "Tarda unos dos segundos y no instalas nada en tu dispositivo.",
+      "cta.button": "Ir al descargador",
+      "footer.tagline": "Un descargador rápido y gratuito para vídeos públicos. Sin app, sin cuenta, sin marca de agua.",
+      "footer.tools": "Descargadores",
+      "footer.guides": "Guías y ayuda",
+      "footer.legal": "Legal",
+      "footer.company": "Producto",
+      "footer.contact": "Contacto",
+      "footer.contact_text": "Avisar de un enlace con problema",
+      "footer.status": "Estado del servicio",
+      "footer.dmca_note": "SsaveVideo no aloja ni guarda ningún medio. Solo devolvemos enlaces públicos que proporciona la plataforma de origen y retiramos herramientas del índice ante un aviso válido.",
+      "footer.rights": "© {year} {brand}. Todas las marcas pertenecen a sus propietarios.",
+      "footer.made": "Hecho para quien solo quiere el archivo.",
+      "legal.terms": "Términos del servicio",
+      "legal.privacy": "Política de privacidad",
+      "legal.dmca": "DMCA / Copyright",
+      "legal.updated": "Última actualización {date}",
+      "meta.canonical_note": "URL canónica",
+      "cookie.note": "No usamos cookies ni rastreadores. Al usar SsaveVideo aceptas los Términos.",
+      "cookie.ok": "Entendido",
+      "badge.free": "Gratis para siempre",
+      "badge.nolimit": "Sin cuota diaria",
+      "badge.nostore": "Sin guardar archivos",
+      "badge.nosignup": "Sin registro",
+      "badge.hdsupport": "HD y resolución original",
+      "badge.mobile": "Funciona en el móvil",
+      "guide.eyebrow": "Guía",
+      "guide.read_steps": "Ver los pasos de descarga",
+      "guide.related": "Herramientas mencionadas en esta guía",
+      "guide.toc": "En esta página",
+      "notfound.title": "Página no encontrada",
+      "notfound.subtitle": "Esa herramienta todavía no existe. Elige una plataforma aquí abajo.",
+      "notfound.home": "Volver al descargador",
+      "error500.title": "Hemos tenido un problema",
+      "error500.subtitle": "El error es de nuestro servidor, no de tu enlace. Vuelve a intentarlo en unos segundos."
+    },
+    "fr": {
+      "nav.home": "Accueil",
+      "nav.tools": "Téléchargeurs",
+      "nav.guides": "Guides",
+      "nav.supported": "Toutes les plateformes",
+      "nav.lang": "Langue",
+      "nav.lang_hint": "Choisissez votre langue",
+      "theme.toggle": "Basculer en mode sombre",
+      "theme.dark": "Sombre",
+      "theme.light": "Clair",
+      "a11y.skip": "Aller au contenu principal",
+      "a11y.results": "Résultats de téléchargement",
+      "hero.badge": "Gratuit · sans compte · sans filigrane",
+      "hero.eyebrow": "Collez un lien",
+      "hero.input_label": "Lien de la vidéo",
+      "hero.paste": "Coller",
+      "hero.pasted": "Lien collé",
+      "hero.download": "Télécharger",
+      "hero.analyzing": "Lecture du manifeste des flux…",
+      "hero.hint": "Liens MP4, WebM et audio. Vidéos publiques uniquement.",
+      "hero.examples": "Testez avec un lien de",
+      "hero.secure": "HTTPS uniquement · le fichier n'est jamais stocké",
+      "error.title": "Ce lien n'a pas fonctionné",
+      "error.retry": "Réessayer",
+      "error.empty": "Collez d'abord le lien de la vidéo.",
+      "error.invalid_url": "Ce n'est pas un lien http(s) valide. Copiez l'URL complète de la publication.",
+      "error.unsupported": "Ce site n'est pas encore pris en charge. SsaveVideo couvre YouTube, TikTok, Instagram, Facebook, Reddit, Pinterest, Threads et X.",
+      "error.private": "La vidéo est privée, limitée par âge ou exige une connexion : elle reste illisible pour une requête anonyme.",
+      "error.notfound": "Vidéo introuvable. Elle a peut-être été supprimée ou le lien est incomplet.",
+      "error.rate": "Vous faites trop de recherches. Patientez un instant puis réessayez.",
+      "error.network": "La plateforme n'a pas répondu à temps. Réessayez dans quelques secondes.",
+      "error.timeout": "La plateforme a mis trop de temps à répondre. Réessayez.",
+      "error.generic": "Un problème est survenu à la lecture de ce lien. Essayez avec une autre URL.",
+      "results.title": "Choisissez le fichier à enregistrer",
+      "results.subtitle": "Liens directs vers le CDN de la plateforme. Ils expirent : téléchargez maintenant.",
+      "results.channel": "Chaîne",
+      "results.duration": "Durée",
+      "results.size": "Taille",
+      "results.quality": "Qualité",
+      "results.bitrate": "Débit",
+      "results.container": "Format",
+      "results.fps": "Images par seconde",
+      "results.video_only": "Vidéo seule — sans son",
+      "results.merged": "Vidéo et son fusionnés",
+      "results.audio": "Piste audio",
+      "results.download": "Télécharger",
+      "results.copy": "Copier le lien",
+      "results.copied": "Copié",
+      "results.howto": "Appui long sur mobile pour enregistrer ; clic droit → Enregistrer sous sur ordinateur.",
+      "results.elapsed": "résolu en {ms} ms",
+      "results.empty": "Aucun média téléchargeable n'a été trouvé pour ce lien.",
+      "results.fmt_note": "Ce sont les flux exacts publiés par la plateforme ; rien n'est converti sur nos serveurs.",
+      "steps.eyebrow": "Comment ça marche",
+      "steps.title": "Télécharger en trois étapes",
+      "steps.subtitle": "Sans compte, sans application, sans réglage. Copiez, collez, enregistrez.",
+      "features.eyebrow": "Pourquoi SsaveVideo",
+      "features.title": "Conçu pour être la façon la plus rapide d'enregistrer une vidéo",
+      "related.title": "Téléchargeurs liés",
+      "related.subtitle": "Passez à l'outil pensé pour ce format précis.",
+      "platforms.eyebrow": "Pris en charge",
+      "platforms.title": "Tous les réseaux couverts",
+      "platforms.subtitle": "Chaque page est réglée pour sa plateforme : qualités, limites et réponses justes.",
+      "faq.eyebrow": "FAQ",
+      "faq.title": "Questions fréquentes",
+      "faq.subtitle": "Des réponses nettes sur la qualité, la légalité, la sécurité et les échecs.",
+      "cta.title": "Collez votre premier lien",
+      "cta.subtitle": "Environ deux secondes, et rien ne s'installe sur votre appareil.",
+      "cta.button": "Ouvrir le téléchargeur",
+      "footer.tagline": "Un téléchargeur rapide et gratuit pour les vidéos publiques. Sans appli, sans compte, sans filigrane.",
+      "footer.tools": "Téléchargeurs",
+      "footer.guides": "Guides et aide",
+      "footer.legal": "Mentions légales",
+      "footer.company": "Produit",
+      "footer.contact": "Contact",
+      "footer.contact_text": "Signaler un lien défaillant",
+      "footer.status": "État du service",
+      "footer.dmca_note": "SsaveVideo n'héberge ni ne stocke aucun média. Nous renvoyons seulement les liens publics fournis par la plateforme source et retirons les outils de l'indexation sur notification valable.",
+      "footer.rights": "© {year} {brand}. Toutes les marques appartiennent à leurs propriétaires.",
+      "footer.made": "Conçu pour ceux qui veulent juste le fichier.",
+      "legal.terms": "Conditions d'utilisation",
+      "legal.privacy": "Politique de confidentialité",
+      "legal.dmca": "DMCA / Droit d'auteur",
+      "legal.updated": "Dernière mise à jour {date}",
+      "meta.canonical_note": "URL canonique",
+      "cookie.note": "Nous n'utilisons ni cookies ni traceurs. Utiliser SsaveVideo vaut acceptation des Conditions.",
+      "cookie.ok": "Compris",
+      "badge.free": "Gratuit pour toujours",
+      "badge.nolimit": "Sans quota quotidien",
+      "badge.nostore": "Aucun fichier stocké",
+      "badge.nosignup": "Sans inscription",
+      "badge.hdsupport": "HD et résolution d'origine",
+      "badge.mobile": "Fonctionne sur mobile",
+      "guide.eyebrow": "Guide",
+      "guide.read_steps": "Voir les étapes de téléchargement",
+      "guide.related": "Outils mentionnés dans ce guide",
+      "guide.toc": "Sur cette page",
+      "notfound.title": "Page introuvable",
+      "notfound.subtitle": "Cet outil n'existe pas encore. Choisissez une plateforme ci-dessous.",
+      "notfound.home": "Retour au téléchargeur",
+      "error500.title": "Un incident est survenu",
+      "error500.subtitle": "Le problème vient de notre serveur, pas de votre lien. Réessayez dans quelques secondes."
+    },
+    "ar": {
+      "nav.home": "الرئيسية",
+      "nav.tools": "أدوات التنزيل",
+      "nav.guides": "الأدلة",
+      "nav.supported": "كل المنصات",
+      "nav.lang": "اللغة",
+      "nav.lang_hint": "اختر لغتك",
+      "theme.toggle": "تبديل الوضع الليلي",
+      "theme.dark": "ليلي",
+      "theme.light": "نهاري",
+      "a11y.skip": "انتقل إلى المحتوى الرئيسي",
+      "a11y.results": "نتائج التنزيل",
+      "hero.badge": "مجاني · بلا تسجيل · بلا علامة مائية",
+      "hero.eyebrow": "الصق الرابط",
+      "hero.input_label": "رابط الفيديو",
+      "hero.paste": "لصق",
+      "hero.pasted": "تم لصق الرابط",
+      "hero.download": "تنزيل",
+      "hero.analyzing": "جارٍ قراءة قائمة التدفقات…",
+      "hero.hint": "روابط MP4 وWebM والصوت. الفيديوهات العامة فقط.",
+      "hero.examples": "جرّب رابطًا من",
+      "hero.secure": "HTTPS فقط · نحن لا نحفظ الملف إطلاقًا",
+      "error.title": "لم يعمل هذا الرابط",
+      "error.retry": "أعد المحاولة",
+      "error.empty": "الصق رابط الفيديو أولًا.",
+      "error.invalid_url": "لا يبدو أن هذا رابط http(s) صالح. انسخ الرابط الكامل للمنشور.",
+      "error.unsupported": "هذا الموقع غير مدعوم بعد. تغطي SsaveVideo يوتيوب والتيك توك والإنستغرام والفيسبوك والريديت والبينترست والثريدز وإكس.",
+      "error.private": "الفيديو خاص أو مقيّد بالعمر أو يتطلب تسجيل الدخول، لذلك لا يمكن قراءته كطلب مجهول.",
+      "error.notfound": "لم نعثر على الفيديو. ربما حُذف أو كان الرابط ناقصًا.",
+      "error.rate": "عدد الطلبات كثير جدًا. انتظر لحظة ثم أعد المحاولة.",
+      "error.network": "لم تستجب المنصة في الوقت المناسب. أعد المحاولة بعد ثوانٍ.",
+      "error.timeout": "استغرقت المنصة وقتًا طويلًا للرد. أعد المحاولة.",
+      "error.generic": "حدث خطأ أثناء قراءة الرابط. جرّب رابطًا آخر.",
+      "results.title": "اختر الملف المراد حفظه",
+      "results.subtitle": "روابط مباشرة من شبكة توصيل المنصة. تنتهي صلاحيتها سريعًا، فنزّل الآن.",
+      "results.channel": "القناة",
+      "results.duration": "المدة",
+      "results.size": "الحجم",
+      "results.quality": "الجودة",
+      "results.bitrate": "معدل البت",
+      "results.container": "الصيغة",
+      "results.fps": "معدل الإطارات",
+      "results.video_only": "فيديو فقط — بلا صوت",
+      "results.merged": "فيديو وصوت مدمجان",
+      "results.audio": "مسار صوتي",
+      "results.download": "تنزيل",
+      "results.copy": "نسخ الرابط",
+      "results.copied": "تم النسخ",
+      "results.howto": "اضغط مطولًا على الجوال للحفظ؛ وبزر الفأرة الأيمن ثم «حفظ الرابط باسم» على الحاسوب.",
+      "results.elapsed": "تم الحل في {ms} مللي ثانية",
+      "results.empty": "لا يوجد وسائط قابلة للتنزيل عبر هذا الرابط.",
+      "results.fmt_note": "هذه هي التدفقات نفسها التي تنشرها المنصة، ولا نحوّل شيئًا على خوادمنا.",
+      "steps.eyebrow": "طريقة العمل",
+      "steps.title": "نزّل في ثلاث خطوات",
+      "steps.subtitle": "بلا حساب وبلا تطبيق وبلا إعدادات. انسخ والصق واحفظ.",
+      "features.eyebrow": "لماذا SsaveVideo",
+      "features.title": "صُمم ليكون أسرع طريقة لحفظ فيديو",
+      "related.title": "أدوات تنزيل ذات صلة",
+      "related.subtitle": "انتقل إلى الأداة المصممة لهذا الصيغة بعينها.",
+      "platforms.eyebrow": "مدعوم",
+      "platforms.title": "كل الشبكات التي نغطيها",
+      "platforms.subtitle": "كل صفحة مضبوطة لمنصتها: الجودة المناسبة والتنبيهات والإجابات الدقيقة.",
+      "faq.eyebrow": "الأسئلة الشائعة",
+      "faq.title": "أسئلة يطرحها المستخدمون كثيرًا",
+      "faq.subtitle": "إجابات مباشرة عن الجودة والقانونية والأمان وأسباب الفشل.",
+      "cta.title": "الصق رابطك الأول",
+      "cta.subtitle": "يستغرق نحو ثانيتين، ولا يُثبَّت أي شيء على جهازك.",
+      "cta.button": "اذهب إلى أداة التنزيل",
+      "footer.tagline": "أداة مجانية وسريعة لحفظ الفيديوهات العامة. بلا تطبيق وبلا حساب وبلا علامة مائية.",
+      "footer.tools": "أدوات التنزيل",
+      "footer.guides": "أدلة ومساعدة",
+      "footer.legal": "الشؤون القانونية",
+      "footer.company": "المنتج",
+      "footer.contact": "تواصل",
+      "footer.contact_text": "أبلغ عن رابط معطّل",
+      "footer.status": "حالة الخدمة",
+      "footer.dmca_note": "لا تستضيف SsaveVideo أي وسائط ولا تخزّنها. نعيد فقط روابط عامة تنشرها المنصة المصدر، ونزيل الأدوات من الفهرسة عند ورود إشعار صحيح.",
+      "footer.rights": "© {year} {brand}. جميع العلامات التجارية ملك لأصحابها.",
+      "footer.made": "صنعناه لمن يريد الملف فحسب.",
+      "legal.terms": "شروط الخدمة",
+      "legal.privacy": "سياسة الخصوصية",
+      "legal.dmca": "حقوق النشر / DMCA",
+      "legal.updated": "آخر تحديث {date}",
+      "meta.canonical_note": "الرابط الرسمي",
+      "cookie.note": "لا نستخدم أي ملفات تعريف ارتباط أو أدوات تتبع. استخدامك لـ SsaveVideo يعني موافقتك على الشروط.",
+      "cookie.ok": "حسنًا",
+      "badge.free": "مجاني للأبد",
+      "badge.nolimit": "بلا حد يومي",
+      "badge.nostore": "بلا حفظ للملفات",
+      "badge.nosignup": "بلا تسجيل",
+      "badge.hdsupport": "HD ودقة المصدر",
+      "badge.mobile": "يعمل على الجوال",
+      "guide.eyebrow": "دليل",
+      "guide.read_steps": "اطّلع على خطوات التنزيل",
+      "guide.related": "أدوات وردت في هذا الدليل",
+      "guide.toc": "في هذه الصفحة",
+      "notfound.title": "الصفحة غير موجودة",
+      "notfound.subtitle": "هذه الأداة غير متوفرة بعد. اختر منصة من القائمة بالأسفل.",
+      "notfound.home": "العودة إلى أداة التنزيل",
+      "error500.title": "واجهتنا مشكلة",
+      "error500.subtitle": "الخلل في خادمنا وليس في رابطك. أعد المحاولة بعد ثوانٍ."
+    }
+  },
+  "content": {
+    "en": {
+      "hero_subtext": "Save {platform} videos as clean MP4 files. Paste the link and pick a quality — public videos only, and nothing is ever stored on our servers.",
+      "h1": "{Platform} Video Downloader — HD MP4 in Seconds",
+      "meta_title": "{Platform} Downloader — HD MP4, No Watermark | SsaveVideo",
+      "meta_description": "Download {platform} videos in HD MP4 with SsaveVideo: original resolution, no watermark, no signup and no app. Paste one link and save the file.",
+      "steps": [
+        {
+          "title": "Copy the {platform} link",
+          "description": "Use the Share button under the post, or copy the address bar in a browser tab. Make sure the URL points at one video, not a profile."
+        },
+        {
+          "title": "Paste it above and press Download",
+          "description": "SsaveVideo resolves the media manifest for that link in about two seconds and never downloads the video to our servers."
+        },
+        {
+          "title": "Choose the file you want",
+          "description": "Take the highest MP4 for quality, a smaller one for sharing, or the audio track on its own. Saving happens straight from the platform's CDN."
+        }
+      ],
+      "features": [
+        {
+          "title": "Original quality, no re-encode",
+          "icon": "sparkles",
+          "description": "You get the same stream {platform} plays in its app, so the resolution, codec and bitrate are untouched and there is no generation loss."
+        },
+        {
+          "title": "No watermark and no signup",
+          "icon": "shield",
+          "description": "Because nothing is rendered again on our side, no logo is added. There is no account to create and no quota counting your downloads."
+        },
+        {
+          "title": "Works on any device",
+          "icon": "phone",
+          "description": "Android, iPhone, Windows, macOS and Linux all save the file from the same page, including when you paste a shortened share link."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How do I download {platform} videos with SsaveVideo?",
+          "answer": "Copy the post link from the share menu, paste it into the box at the top of this page and press Download. We list every format the platform publishes for that video, and your browser saves the one you tap."
+        },
+        {
+          "question": "Is the {platform} downloader free?",
+          "answer": "Yes, with no account, no plan and no daily limit on files saved. The only cap is a per-IP rate limit on link lookups so one visitor cannot slow the service down for everyone."
+        },
+        {
+          "question": "Does it put a watermark on the video?",
+          "answer": "No. SsaveVideo hands you the platform's own media URL instead of re-encoding the clip, so there is no tool logo and no quality loss in the saved file."
+        },
+        {
+          "question": "Why did my {platform} link fail?",
+          "answer": "Usually the video is private, deleted, age-gated or region-restricted, or the link is a profile URL. The error message names the reason, so open the link in a logged-out tab to confirm."
+        },
+        {
+          "question": "Can I download only the audio?",
+          "answer": "Yes. When the source publishes a separate audio stream it appears as its own row in the result card, which is handy for songs, lectures and voice-overs."
+        },
+        {
+          "question": "Is it legal to save {platform} videos?",
+          "answer": "Downloading your own uploads or openly licensed media is fine in most places. Re-publishing someone else's video without permission breaches copyright and platform rules, so ask first."
+        }
+      ]
+    },
+    "es": {
+      "hero_subtext": "Guarda vídeos de {platform} como MP4 limpios. Pega el enlace y elige la calidad: solo vídeos públicos y nada se queda en nuestros servidores.",
+      "h1": "Descargador de vídeos de {Platform}: MP4 en segundos",
+      "meta_title": "Descargar vídeos de {Platform} en MP4 HD sin marca de agua",
+      "meta_description": "Guarda vídeos de {platform} en HD con SsaveVideo: resolución original, sin marca de agua, sin registro y sin apps. Pega un enlace y descarga el archivo.",
+      "steps": [
+        {
+          "title": "Copia el enlace de {platform}",
+          "description": "Usa el botón Compartir de la publicación o copia la barra de direcciones. Asegúrate de que la URL apunte a un vídeo y no a un perfil."
+        },
+        {
+          "title": "Pégalo arriba y pulsa Descargar",
+          "description": "SsaveVideo lee el manifiesto de medios del enlace en unos dos segundos y nunca descarga el vídeo a nuestros servidores."
+        },
+        {
+          "title": "Elige el archivo que quieras",
+          "description": "Coge el MP4 de mayor calidad, uno más pequeño para enviarlo, o solo la pista de audio. La descarga va directa desde el CDN de la plataforma."
+        }
+      ],
+      "features": [
+        {
+          "title": "Calidad original, sin recodificar",
+          "icon": "sparkles",
+          "description": "Recibes el mismo stream que {platform} reproduce en su app, con resolución, códec y bitrate intactos y sin pérdida de generación."
+        },
+        {
+          "title": "Sin marca de agua ni registro",
+          "icon": "shield",
+          "description": "Como no volvemos a renderizar nada, no se añade ningún logotipo. No hay cuenta que crear ni cuota que cuente tus descargas."
+        },
+        {
+          "title": "Funciona en cualquier dispositivo",
+          "icon": "phone",
+          "description": "Android, iPhone, Windows, macOS y Linux guardan el archivo desde la misma página, también con enlaces cortos de compartir."
+        }
+      ],
+      "faq": [
+        {
+          "question": "¿Cómo descargo vídeos de {platform} con SsaveVideo?",
+          "answer": "Copia el enlace desde el menú Compartir, pégalo en la casilla de arriba y pulsa Descargar. Listamos todos los formatos que la plataforma publica para ese vídeo y tu navegador guarda el que elijas."
+        },
+        {
+          "question": "¿El descargador de {platform} es gratis?",
+          "answer": "Sí, sin cuenta, sin planes y sin límite diario de archivos. Solo hay un límite de peticiones por IP para que un visitante no ralentice el servicio para los demás."
+        },
+        {
+          "question": "¿Añade marca de agua al vídeo?",
+          "answer": "No. SsaveVideo devuelve la URL del medio de la plataforma en lugar de recodificar el clip, así que el archivo no lleva logotipo ni pierde calidad."
+        },
+        {
+          "question": "¿Por qué falló mi enlace de {platform}?",
+          "answer": "Suele deberse a que el vídeo es privado, fue borrado, tiene restricción de edad o región, o a que pegaste la URL de un perfil. El mensaje de error indica el motivo exacto."
+        },
+        {
+          "question": "¿Puedo descargar solo el audio?",
+          "answer": "Sí. Cuando la plataforma publica una pista de audio aparte aparece como una fila propia en la tarjeta de resultados, ideal para canciones, clases y locuciones."
+        },
+        {
+          "question": "¿Es legal guardar vídeos de {platform}?",
+          "answer": "Descargar tus propias subidas o material con licencia abierta está permitido en la mayoría de países. Republicar el vídeo de otra persona sin permiso viola el copyright y las normas de la plataforma."
+        }
+      ]
+    },
+    "fr": {
+      "hero_subtext": "Enregistrez vos vidéos {platform} en MP4 propre. Collez le lien et choisissez la qualité : vidéos publiques seulement, et rien n'est stocké chez nous.",
+      "h1": "Téléchargeur vidéo {Platform} — MP4 en quelques secondes",
+      "meta_title": "Télécharger les vidéos {Platform} en MP4 HD sans filigrane",
+      "meta_description": "Enregistrez les vidéos {platform} en HD avec SsaveVideo : résolution d'origine, sans filigrane, sans compte ni application. Collez un lien et téléchargez.",
+      "steps": [
+        {
+          "title": "Copiez le lien {platform}",
+          "description": "Utilisez le bouton Partager sous la publication ou copiez la barre d'adresse. Vérifiez que l'URL vise bien une vidéo et non un profil."
+        },
+        {
+          "title": "Collez-le ci-dessus puis téléchargez",
+          "description": "SsaveVideo lit le manifeste média du lien en environ deux secondes et ne télécharge jamais la vidéo sur nos serveurs."
+        },
+        {
+          "title": "Choisissez le fichier voulu",
+          "description": "Prenez le MP4 le plus haut pour la qualité, un plus léger pour l'envoi, ou seulement la piste audio. Le transfert part du CDN de la plateforme."
+        }
+      ],
+      "features": [
+        {
+          "title": "Qualité d'origine, sans ré-encodage",
+          "icon": "sparkles",
+          "description": "Vous récupérez le flux que {platform} diffuse dans son application : résolution, codec et débit intacts, sans perte de génération."
+        },
+        {
+          "title": "Sans filigrane ni inscription",
+          "icon": "shield",
+          "description": "Rien n'est recomposé de notre côté, donc aucun logo n'est ajouté. Pas de compte à créer ni de quota comptant vos téléchargements."
+        },
+        {
+          "title": "Sur tous les appareils",
+          "icon": "phone",
+          "description": "Android, iPhone, Windows, macOS et Linux enregistrent le fichier depuis la même page, même avec un lien de partage raccourci."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Comment télécharger une vidéo {platform} avec SsaveVideo ?",
+          "answer": "Copiez le lien depuis le menu Partager, collez-le dans le champ du haut et appuyez sur Télécharger. Nous listons tous les formats publiés pour cette vidéo, et votre navigateur enregistre celui que vous choisissez."
+        },
+        {
+          "question": "Le téléchargeur {platform} est-il gratuit ?",
+          "answer": "Oui, sans compte, sans formule ni limite quotidienne de fichiers. Seul un quota de requêtes par IP empêche un visiteur de ralentir le service pour tout le monde."
+        },
+        {
+          "question": "Ajoutez-vous un filigrane à la vidéo ?",
+          "answer": "Non. SsaveVideo renvoie l'URL du média de la plateforme au lieu de ré-encoder le clip : le fichier reste sans logo et sans perte de qualité."
+        },
+        {
+          "question": "Pourquoi mon lien {platform} a-t-il échoué ?",
+          "answer": "La vidéo est souvent privée, supprimée, limitée par âge ou par région, ou vous avez collé une URL de profil. Le message d'erreur précise la cause exacte."
+        },
+        {
+          "question": "Puis-je télécharger uniquement l'audio ?",
+          "answer": "Oui. Quand la plateforme publie une piste audio séparée, elle apparaît sur sa propre ligne dans la fiche de résultats, pratique pour la musique et les cours."
+        },
+        {
+          "question": "Est-il légal d'enregistrer des vidéos {platform} ?",
+          "answer": "Télécharger vos propres publications ou un média sous licence ouverte est admis dans la plupart des pays. Republier la vidéo d'autrui sans autorisation enfreint le droit d'auteur et les règles de la plateforme."
+        }
+      ]
+    },
+    "ar": {
+      "hero_subtext": "احفظ فيديوهات {platform} بصيغة MP4 نظيفة. الصق الرابط واختر الجودة: الفيديوهات العامة فقط، ولا نحفظ أي ملف على خوادمنا.",
+      "h1": "أداة تنزيل فيديو {Platform} — MP4 خلال ثوانٍ",
+      "meta_title": "تنزيل فيديوهات {platform} بصيغة MP4 HD بلا علامة مائية",
+      "meta_description": "احفظ فيديوهات {platform} بجودتها الأصلية مع SsaveVideo: بلا علامة مائية وبلا تسجيل وبلا تطبيق. الصق الرابط ونزّل الملف مباشرة من المنصة.",
+      "steps": [
+        {
+          "title": "انسخ رابط {platform}",
+          "description": "استخدم زر المشاركة أسفل المنشور أو انسخ شريط العنوان. تأكّد أن الرابط يشير إلى فيديو واحد لا إلى صفحة الملف الشخصي."
+        },
+        {
+          "title": "الصقه في الأعلى واضغط تنزيل",
+          "description": "تقرأ SsaveVideo قائمة الوسائط لهذا الرابط في نحو ثانيتين، دون أن تنزّل الفيديو إلى خوادمنا إطلاقًا."
+        },
+        {
+          "title": "اختر الملف الذي تريده",
+          "description": "خذ أعلى صيغة MP4 للجودة، أو صيغة أصغر للمشاركة، أو المسار الصوتي وحده. يتم الحفظ مباشرة من شبكة توصيل المنصة."
+        }
+      ],
+      "features": [
+        {
+          "title": "جودة المصدر دون ترميز جديد",
+          "icon": "sparkles",
+          "description": "تحصل على التدفق نفسه الذي تشغّله {platform} في تطبيقها، فدقة الصورة والترميز ومعدل البت كما هي بلا أي خسارة."
+        },
+        {
+          "title": "بلا علامة مائية وبلا تسجيل",
+          "icon": "shield",
+          "description": "لأننا لا نعيد إنتاج الفيديو، لا تُضاف أي شعارات. ولا يوجد حساب تنشئه ولا حد يومي لعدد تنزيلاتك."
+        },
+        {
+          "title": "يعمل على كل الأجهزة",
+          "icon": "phone",
+          "description": "أندرويد وiOS وويندوز وmacOS ولينكس جميعها تحفظ الملف من الصفحة نفسها، حتى مع روابط المشاركة المختصرة."
+        }
+      ],
+      "faq": [
+        {
+          "question": "كيف أنزّل فيديوهات {platform} باستخدام SsaveVideo؟",
+          "answer": "انسخ رابط المنشور من قائمة المشاركة، والصقه في الحقل أعلى الصفحة ثم اضغط تنزيل. نعرض كل الصيغات التي تنشرها المنصة لهذا الفيديو، ويحفظ متصفحك ما تختاره."
+        },
+        {
+          "question": "هل أداة تنزيل {platform} مجانية؟",
+          "answer": "نعم، بلا حساب وبلا خطط اشتراك وبلا حد يومي لعدد الملفات. القيد الوحيد هو حد طلبات لكل عنوان IP حتى لا يبطئ زائر واحد الخدمة للجميع."
+        },
+        {
+          "question": "هل تضيفون علامة مائية إلى الفيديو؟",
+          "answer": "لا. تعيد SsaveVideo رابط الوسائط الأصلي من المنصة بدلًا من إعادة ترميز المقطع، فيبقى الملف بلا شعار وبلا نقص في الجودة."
+        },
+        {
+          "question": "لماذا فشل رابط {platform} الخاص بي؟",
+          "answer": "غالبًا يكون الفيديو خاصًا أو محذوفًا أو مقيّدًا بالعمر أو بالمنطقة، أو أنك نسخت رابط الملف الشخصي. توضح رسالة الخطأ السبب بدقة."
+        },
+        {
+          "question": "هل يمكن تنزيل الصوت وحده؟",
+          "answer": "نعم. عندما تنشر المنصة مسارًا صوتيًا منفصلًا يظهر كسطر مستقل في بطاقة النتائج، وهو مفيد للأغاني والمحاضرات والتعليقات الصوتية."
+        },
+        {
+          "question": "هل حفظ فيديوهات {platform} قانوني؟",
+          "answer": "تنزيل ما رفعته أنت أو ما رخص صاحبه بالنسخ أمر مسموح في معظم الدول. أما إعادة نشر فيديو شخص آخر دون إذن فيخالف حقوق النشر وقواعد المنصة، فاستأذن أولًا."
+        }
+      ]
+    }
+  }
+}

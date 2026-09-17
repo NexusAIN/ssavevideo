@@ -1,0 +1,14 @@
+{
+  "name": "ssavevideo-frontend-assets",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build pipeline for the standalone (purged) Tailwind stylesheet + OG card assets served by the FastAPI app. The runtime has ZERO Node dependency: app/static/css/app.css is a committed build artifact.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets-src/tailwind.input.css -o ./app/static/css/app.css --minify",
+    "watch:css": "tailwindcss -i ./assets-src/tailwind.input.css -o ./app/static/css/app.css --watch",
+    "build": "npm run build:css && python3 scripts/build_og_images.py"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

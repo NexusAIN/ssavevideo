@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "comment": "Legal documents are served in English only and are deliberately excluded from the hreflang graph (a self-referential alternate is better than pointing at a translation that does not exist). Localized tool pages link to these canonical URLs.",
+    "updated": "2026-09-17"
+  },
+  "documents": {
+    "terms": {
+      "key": "terms",
+      "slug": "terms",
+      "path": "/terms",
+      "name": "Terms of Service",
+      "meta_title": "Terms of Service — SsaveVideo",
+      "meta_description": "What you may and may not do with SsaveVideo: permitted use of the link resolver, acceptable-use rules, liability limits and how to report a problem.",
+      "h1": "Terms of Service",
+      "intro": "These terms are short on purpose. They describe what the service does, what we expect from you and what you should not expect from us.",
+      "sections": [
+        {
+          "title": "What the service is",
+          "body": "SsaveVideo is a free web tool that accepts a public video URL, asks the source platform for the list of media renditions that URL refers to, and displays those addresses as buttons in your browser. We do not host, store, copy, transcode or distribute media. The file you save is delivered by the source platform's own content delivery network, over your own connection."
+        },
+        {
+          "title": "Permitted use",
+          "body": "You may use SsaveVideo to keep a copy of content you own, content published under a licence that allows copying, or content you have been given written permission to save. You may use it for accessibility, offline travel, archival of your own uploads and evaluation of quality differences between renditions."
+        },
+        {
+          "title": "What is not permitted",
+          "body": "You may not use the service to infringe copyright or neighbouring rights, to download paid or subscription content you are not licensed to copy, to harass or stalk others, to obtain content that a rights holder has made available only under a licence with conditions you would be breaking, or to bypass any access control. Automated scraping of this site in bulk, reselling access, or presenting the tool as your own product is also prohibited."
+        },
+        {
+          "title": "No warranty, and the limits of what we control",
+          "body": "The service is provided as is, without warranty of any kind. Availability depends on upstream platforms, which change their APIs, rate-limit shared addresses and revoke signed media links at any time; a link that worked a minute ago may expire. We do not guarantee that a given video can be resolved, that a rendition matches the label, or that a saved file will play on your device."
+        },
+        {
+          "title": "Limitation of liability",
+          "body": "To the maximum extent permitted by law, SsaveVideo is not liable for indirect, incidental or consequential loss arising from use of the tool, including claims brought against you by a rights holder. Your responsibility for what you download and how you reuse it is yours."
+        },
+        {
+          "title": "Acceptable use and rate limiting",
+          "body": "To protect the service for everyone and to keep our address from being blocked by source platforms, the link-resolution endpoint is rate limited per client address. Exceeding it returns an HTTP 429 with a retry hint. Repeated abuse may lead to a block at the edge."
+        },
+        {
+          "title": "Changes to these terms",
+          "body": "We may update these terms; the version at the top of this page is the one in force. Continued use after a change constitutes acceptance. If a change materially restricts the service we will note it on the home page for thirty days."
+        },
+        {
+          "title": "Contact",
+          "body": "For legal notices, including copyright requests under the DMCA section of this site, use the contact address published on the DMCA page. We answer rights-holder requests before we answer anything else."
+        }
+      ]
+    },
+    "privacy": {
+      "key": "privacy",
+      "slug": "privacy",
+      "path": "/privacy",
+      "name": "Privacy Policy",
+      "meta_title": "Privacy Policy — SsaveVideo",
+      "meta_description": "How SsaveVideo handles data: no accounts, no cookies, no trackers, what the server logs, how long a pasted link lives and how to exercise your rights.",
+      "h1": "Privacy Policy",
+      "intro": "There is very little to tell, because there is very little we collect. This page documents it precisely so you can verify it in the source code.",
+      "sections": [
+        {
+          "title": "The link you paste",
+          "body": "Your browser sends the URL to our server over HTTPS. The server resolves the media manifest for that URL in memory and returns the result. The URL is not written to a database, not attached to a profile and not shared with any third party. Successful results are held in a short-lived in-memory cache (fifteen minutes by default) purely so that two people asking for the same viral video do not hit the platform twice; that cache is lost on process restart and never touches disk."
+        },
+        {
+          "title": "Server logs",
+          "body": "The reverse proxy records standard access information for abuse handling: a timestamp, the request path, the HTTP status, the response size and a truncated client IP address. Request bodies are not logged, so the pasted video URL is not in the logs. Log files are retained for thirty days and used only to diagnose failures and to block abusive traffic."
+        },
+        {
+          "title": "Cookies and local storage",
+          "body": "The site sets no cookies. Your theme choice (light or dark) and language choice are stored in localStorage on your own device so the page respects them next visit; nothing is transmitted to us and clearing your browser data removes them."
+        },
+        {
+          "title": "No advertising, no third-party trackers",
+          "body": "We run no advertising network, no social pixel, no analytics script and no fingerprinting. There is no consent banner because there is nothing to consent to beyond the mechanics of serving you the page. If we ever add privacy-respecting, aggregated, self-hosted metrics, this page will say so before the script ships."
+        },
+        {
+          "title": "The media you download",
+          "body": "Downloading happens between your browser and the source platform. Those requests carry your IP address to that platform, in the same way watching the video in the platform's own player would. We cannot make that invisible, and we never sit in the middle of the transfer."
+        },
+        {
+          "title": "Children",
+          "body": "The service is not directed at children under 16 and collects no personal information from anyone, so there is nothing to remove on request. A parent or guardian who believes a child's information has reached us can write to the contact address on our DMCA page and we will verify and delete it."
+        },
+        {
+          "title": "Your rights, and how to exercise them",
+          "body": "Under the GDPR, CCPA and comparable laws you have rights of access, rectification, erasure, restriction and portability. Because we store no personal data profiles, exercising those rights here means asking us to check our logs. Write to the address on the DMCA page with your request; we respond within thirty days and we do not require an account to do it."
+        },
+        {
+          "title": "International transfers",
+          "body": "Requests are served from the region closest to you by our hosting provider. Where that moves traffic across borders, it is covered by the provider's standard contractual clauses. We do not transfer anything else, because there is nothing else to transfer."
+        }
+      ]
+    },
+    "dmca": {
+      "key": "dmca",
+      "slug": "dmca",
+      "path": "/dmca",
+      "name": "DMCA & Copyright",
+      "meta_title": "DMCA & Copyright Policy — SsaveVideo",
+      "meta_description": "How to report copyright infringement to SsaveVideo, what the service hosts (nothing), the counter-notice process and the repeat-infringer policy.",
+      "h1": "DMCA Disclaimer & Copyright Policy",
+      "intro": "Read this first if you are a rights holder: it explains what SsaveVideo is, what it is not, and the fastest route to a fix.",
+      "sections": [
+        {
+          "title": "SsaveVideo does not host media",
+          "body": "We store no video files, no audio files and no copies of either — not permanently and not temporarily. The tool reads the public manifest a platform publishes for a given URL and displays the addresses it contains. The bytes always travel between your device and the platform that serves them. Consequently there is no file for us to delete on our servers, and no user-uploaded content to take down."
+        },
+        {
+          "title": "What we can and will do",
+          "body": "A valid notice can result in: (1) a specific source page being excluded from our programmatic landing pages and internal linking; (2) our support of a specific host or extractor being disabled; (3) an account, session or address that repeatedly abuses the tool being blocked at the edge; (4) clarification and evidence provided to you about how the tool works, which is often what a platform's own legal team needs to act on the source upload."
+        },
+        {
+          "title": "Filing a notice",
+          "body": "Email legal@ssavevideo.com with the subject line DMCA Notice. Include: your name, postal address, telephone number and email; identification of the copyrighted work (title plus a URL where you publish it); the exact URL on ssavevideo.com involved, if any; a statement of good-faith belief that the use is not authorised by the copyright holder, its agent or the law; a statement, under penalty of perjury, that the information is accurate and that you are the owner or authorised to act for the owner; and your physical or electronic signature."
+        },
+        {
+          "title": "Response time and process",
+          "body": "Notices are acknowledged within two business days and actioned within seven. Because the tool resolves links rather than hosting them, we may reasonably determine that no change is required; if so we will explain exactly why, and we will always tell you which measures above we are willing to take. Notices sent to any other address, or lacking the statutory elements, may not be actionable."
+        },
+        {
+          "title": "Counter-notice",
+          "body": "If you believe a request was made in error, send a counter-notice with your contact details, identification of the material concerned, a statement under penalty of perjury that it was removed by mistake or misidentification, and consent to jurisdiction in the federal district where your address lies (or the district of our provider if you are outside the United States). We forward a counter-notice to the complainant and, unless we are told within fourteen business days that an action has been filed, we reverse the measure."
+        },
+        {
+          "title": "Repeat infringers",
+          "body": "We reserve the right to block clients that repeatedly use the tool to obtain content they have no licence to copy, and to cooperate with rights holders where a court compels us to. In practice, blocking is a last resort: the tool has no accounts, so the only lever we have is a network-level one."
+        },
+        {
+          "title": "Fair use and other lawful uses",
+          "body": "Downloading a copy of a work you own, archival, accessibility, commentary, criticism, parody and research are lawful uses in many jurisdictions. A notice against a use like this can be answered with a counter-notice, and we will not act on a claim that plainly ignores fair-use analysis without asking you to describe the work more precisely."
+        },
+        {
+          "title": "No legal advice",
+          "body": "This page describes our process. It is not legal advice, and it does not define what is lawful in your country. If your situation involves a commercial re-use or a dispute with a platform, speak to a lawyer who handles copyright where you live."
+        }
+      ]
+    }
+  }
+}

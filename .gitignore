@@ -1,0 +1,23 @@
+# Environments and tooling caches — never part of the deliverable.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node/Tailwind toolchain. node_modules is rebuildable with `npm ci`; the *output*
+# (app/static/css/app.css) IS tracked on purpose, so a Python-only deploy
+# (`pip install -r requirements.txt && uvicorn`) needs no Node at all.
+node_modules/
+*.log
+.DS_Store
+
+# Local scratch: media fixtures for manual extraction tests, editor state.
+/tmp/
+*.swp
+.idea/
+.vscode/

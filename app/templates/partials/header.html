@@ -1,0 +1,108 @@
+{#- Sticky header: brand, quick links to the highest-volume tools, language
+    selector and theme toggle. Both dropdowns are native <details>, so the
+    navigation is fully functional with JavaScript disabled and adds no
+    layout shift. -#}
+{% from "partials/icons.html" import icon %}
+{% set home_path = home_path or ('/' if locale.is_default else '/' ~ locale.prefix ~ '/') %}
+{#- The language menu reuses the hreflang graph: switching locale must land on the
+    SAME page in the other language, never on a homepage. English-only documents
+    (guides, legal) have no translations, so they fall back to the locale home. -#}
+{% set alt_by_lang = alt_by_lang | default({}) %}
+<header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-lg supports-[backdrop-filter]:bg-white/70 dark:border-white/10 dark:bg-slate-950/80 supports-[backdrop-filter]:dark:bg-slate-950/70">
+  <div class="ss-container">
+    <nav class="flex h-16 items-center gap-3" aria-label="Main">
+      <a href="{{ home_path }}" class="group flex items-center gap-2.5 rounded-xl px-1 py-1" aria-label="{{ store.site.brand }} — {{ t('nav.home') }}">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 text-white shadow-md shadow-indigo-600/25 transition group-hover:scale-105">
+          {{ icon('logo', 'w-5 h-5') }}
+        </span>
+        <span class="text-[1.0625rem] font-extrabold tracking-tight">
+          Ssave<span class="bg-gradient-to-r from-indigo-600 to-fuchsia-600 bg-clip-text text-transparent group-hover:from-indigo-500 group-hover:to-fuchsia-500">Video</span>
+        </span>
+      </a>
+
+      {#- Desktop quick links: the five tools that carry the search volume. -#}
+      <ul class="ms-auto hidden items-center gap-1 lg:flex">
+        {% for item in nav_platforms %}
+          <li>
+            <a href="{{ item.path }}"
+               class="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white">
+              {{ icon(item.icon, 'w-4 h-4') }}
+              <span>{{ item.name }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <div class="ms-auto flex items-center gap-1.5 lg:ms-0">
+        {#- Language selector (works without JS; keeps the visitor on the same page). -#}
+        <details class="relative" data-lang-menu>
+          <summary class="flex h-10 cursor-pointer list-none items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:bg-white/10 [&::-webkit-details-marker]:hidden"
+                   aria-haspopup="menu" title="{{ t('nav.lang_hint') }}">
+            {{ icon('globe', 'w-4 h-4') }}
+            <span class="hidden sm:inline">{{ locale.native_label }}</span>
+            <span class="uppercase sm:hidden">{{ locale.code }}</span>
+            {{ icon('chevron-down', 'w-3.5 h-3.5 opacity-60') }}
+          </summary>
+          <ul class="absolute end-0 top-12 z-50 w-48 overflow-hidden rounded-xl border border-slate-200 bg-white p-1 shadow-xl dark:border-white/10 dark:bg-slate-900" role="menu">
+            {% for loc in locales %}
+              {% set target = alt_by_lang.get(loc.hreflang) or home_path %}
+              <li role="none">
+                <a href="{{ target }}" role="menuitem" lang="{{ loc.code }}"
+                   class="flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm transition hover:bg-slate-100 dark:hover:bg-white/10{{ ' font-bold text-indigo-600 dark:text-indigo-300' if loc.code == locale.code else ' text-slate-700 dark:text-slate-200' }}">
+                  <span>{{ loc.native_label }}</span>
+                  <span class="text-[.6875rem] uppercase tracking-wide opacity-60">{{ loc.code }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </details>
+
+        <button type="button" data-theme-toggle
+                class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10"
+                aria-label="{{ t('theme.toggle') }}" title="{{ t('theme.toggle') }}">
+          <span class="dark:hidden">{{ icon('moon', 'w-4 h-4') }}</span>
+          <span class="hidden dark:inline">{{ icon('sun', 'w-4 h-4') }}</span>
+        </button>
+
+        {#- Mobile menu, also <details>-based. -#}
+        <details class="relative lg:hidden" data-mobile-menu>
+          <summary class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 [&::-webkit-details-marker]:hidden"
+                   aria-label="{{ t('nav.tools') }}">
+            {{ icon('menu', 'w-5 h-5') }}
+          </summary>
+          <div class="absolute end-0 top-12 z-50 w-72 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl dark:border-white/10 dark:bg-slate-900">
+            <p class="ss-eyebrow px-1 pb-2">{{ t('nav.tools') }}</p>
+            <ul class="grid gap-1">
+              {% for entry in all_platforms %}
+                <li>
+                  <a href="{{ entry.path }}" class="flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10">
+                    {{ icon(entry.icon, 'w-4 h-4') }}{{ entry.name }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+            <hr class="my-2 border-slate-200 dark:border-white/10">
+            <ul class="grid gap-1">
+              <li><a class="flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10" href="{{ home_path }}#supported">{{ icon('layers', 'w-4 h-4') }}{{ t('nav.supported') }}</a></li>
+              {% for guide in all_guides %}
+                <li><a class="flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10" href="{{ guide.path }}">{{ icon('sparkles', 'w-4 h-4') }}{{ guide.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </details>
+      </div>
+    </nav>
+  </div>
+  {#- Platform quick-strip on mobile: the same destinations, no extra tap. -#}
+  <div class="border-t border-slate-200/70 dark:border-white/10 lg:hidden">
+    <ul class="ss-container flex items-center gap-2 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {% for item in nav_platforms %}
+        <li class="shrink-0">
+          <a href="{{ item.path }}" class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
+            {{ icon(item.icon, 'w-3.5 h-3.5') }}{{ item.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</header>
