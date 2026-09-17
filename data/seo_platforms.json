@@ -1,0 +1,1510 @@
+{
+  "meta": {
+    "schema_version": 3,
+    "updated": "2026-09-17",
+    "comment": "Single source of truth for ssavevideo.com programmatic SEO AND for the per-platform extraction profile. Every HTML page (home, tool page, guide) is rendered from this file through one Jinja2 template. Adding a new platform = adding one object here; no Python and no template change is required. `color_gradient`/`chip_class` values are complete literal Tailwind class strings so the purged stylesheet build can see them (see tailwind.config.js content globs)."
+  },
+  "site": {
+    "brand": "SsaveVideo",
+    "domain": "ssavevideo.com",
+    "base_url": "https://ssavevideo.com",
+    "tagline": "Free, unlimited video downloader for 10 platforms",
+    "short_description": "Paste any link and get direct HD MP4 or audio download buttons in seconds. No app, no signup, no watermark.",
+    "meta_title": "SsaveVideo — Free Video Downloader for 10 Platforms",
+    "meta_description": "SsaveVideo downloads videos from YouTube, TikTok, Instagram, Facebook, Reddit and more in HD MP4 or audio. Paste a link, get direct download.",
+    "h1": "The Free Video Downloader for Every Platform",
+    "hero_subtext": "Paste a link from YouTube, TikTok, Instagram, Facebook, Reddit, Pinterest, Threads or X and get direct download buttons for HD video and audio in about two seconds.",
+    "org": {
+      "name": "SsaveVideo",
+      "url": "https://ssavevideo.com",
+      "logo": "https://ssavevideo.com/static/img/logo.svg"
+    },
+    "og_image": "/static/img/og-default.png",
+    "favicon": "/static/img/favicon.svg",
+    "theme_color_light": "#ffffff",
+    "theme_color_dark": "#020617",
+    "nav_quick_links": [
+      "youtube-video-downloader",
+      "tiktok-video-downloader",
+      "instagram-video-downloader",
+      "facebook-video-downloader",
+      "youtube-mp3-downloader"
+    ],
+    "footer_columns": [
+      {
+        "title": "Downloaders",
+        "links": [
+          "youtube-video-downloader",
+          "youtube-shorts-downloader",
+          "youtube-mp3-downloader",
+          "tiktok-video-downloader",
+          "instagram-video-downloader",
+          "facebook-video-downloader",
+          "reddit-video-downloader",
+          "pinterest-video-downloader",
+          "threads-video-downloader",
+          "x-video-downloader"
+        ]
+      },
+      {
+        "title": "Guides",
+        "guides": true
+      },
+      {
+        "title": "Support & Legal",
+        "legal": true
+      }
+    ],
+    "badges": [
+      "10 platforms",
+      "HD MP4 & audio",
+      "No signup"
+    ],
+    "steps": [
+      {
+        "title": "Copy the video link",
+        "description": "On any supported platform tap Share → Copy link, or copy the address bar. Short links like youtu.be, vm.tiktok and fb.watch expand automatically."
+      },
+      {
+        "title": "Paste it into the box",
+        "description": "SsaveVideo reads the media manifest for that link. The video itself is never transferred through our servers, which is why results are ready in about two seconds."
+      },
+      {
+        "title": "Choose a format and save",
+        "description": "Pick HD MP4, a smaller SD file or the audio-only stream, then tap the button. Your browser downloads straight from the platform's content delivery network."
+      }
+    ],
+    "features": [
+      {
+        "title": "Ten platforms, one input box",
+        "icon": "layers",
+        "description": "YouTube, Shorts, TikTok, Instagram, Facebook, Reddit, Pinterest, Threads and X all use the same form, so you never have to remember which tool does what."
+      },
+      {
+        "title": "Nothing installed, nothing stored",
+        "icon": "shield",
+        "description": "No app, no extension, no account and no queue. We resolve URLs and hand them to you; no media bytes are ever written to our disk."
+      },
+      {
+        "title": "Best quality that actually exists",
+        "icon": "sparkles",
+        "description": "We list every rendition the platform publishes for that video, with real bitrate and size, instead of promising 4K that was never uploaded."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is SsaveVideo and how does it work?",
+        "answer": "SsaveVideo is a free web tool that turns a public video link into direct download buttons. It asks the source platform for the media manifest, picks the formats available to a logged-out visitor and returns their addresses; your browser then fetches the file from the platform's own content delivery network."
+      },
+      {
+        "question": "Which sites are supported?",
+        "answer": "YouTube including Shorts and MP3-style audio, TikTok, Instagram Reels and Stories, Facebook Watch and Reels, Reddit, Pinterest, Threads and X (Twitter). Paste any supported link and the correct extractor is selected from the URL automatically."
+      },
+      {
+        "question": "Is it free, and are there limits?",
+        "answer": "Everything is free with no account, no paywall and no daily download quota. There is a per-IP rate limit on the lookup endpoint, which keeps the service fast for everyone and is not a cap on how much you can save."
+      },
+      {
+        "question": "Do you keep a copy of the videos I download?",
+        "answer": "No. The server stores media never — not temporarily, not cached, not logged. Only the resolved URL lives in your browser's memory for as long as the result card is open."
+      },
+      {
+        "question": "Why does a link sometimes fail?",
+        "answer": "Because the video is private, deleted, region-restricted or age-gated, or because the platform is briefly unreachable. The error message tells you which one it was so you know whether to fix the link or leave it."
+      },
+      {
+        "question": "Can I use it on mobile?",
+        "answer": "Yes. The page is mobile-first and works in Chrome, Safari, Firefox, Edge and Brave on Android and iPhone, where long-pressing a format button saves the file to your device."
+      }
+    ],
+    "related": [
+      "youtube-video-downloader",
+      "youtube-shorts-downloader",
+      "youtube-mp3-downloader",
+      "tiktok-video-downloader",
+      "instagram-video-downloader",
+      "facebook-video-downloader"
+    ]
+  },
+  "extraction_defaults": {
+    "comment": "Baseline yt-dlp options used for every platform. Nothing is ever written to disk: download=False, and only the resolved CDN URLs are returned to the browser.",
+    "video_ext_priority": [
+      "mp4",
+      "webm",
+      "mkv"
+    ],
+    "audio_ext_priority": [
+      "m4a",
+      "mp3",
+      "opus",
+      "webm"
+    ],
+    "max_height": 2160,
+    "require_progressive": false,
+    "audio_only": false,
+    "socket_timeout_seconds": 12,
+    "extractor_retries": 1
+  },
+  "platforms": [
+    {
+      "key": "youtube",
+      "slug": "youtube-video-downloader",
+      "path": "/youtube-video-downloader",
+      "name": "YouTube",
+      "display_name": "YouTube Video",
+      "icon": "youtube",
+      "domains": [
+        "youtube.com",
+        "youtu.be",
+        "music.youtube.com"
+      ],
+      "url_placeholder": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "color_gradient": "bg-gradient-to-br from-red-600 via-rose-600 to-orange-500",
+      "soft_gradient": "bg-gradient-to-br from-red-50 via-white to-orange-50 dark:from-red-500/10 dark:via-slate-950 dark:to-orange-500/10",
+      "text_gradient": "bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent",
+      "chip_class": "border-red-200 bg-red-50 text-red-700 hover:border-red-400 hover:text-red-800 dark:border-red-500/25 dark:bg-red-500/10 dark:text-red-300",
+      "button_class": "bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-lg shadow-red-600/25 hover:brightness-110",
+      "glow_class": "shadow-red-500/20",
+      "meta_title": "YouTube Downloader — HD MP4 & Audio, Free | SsaveVideo",
+      "meta_description": "Paste a YouTube link into SsaveVideo and get direct download buttons for 1080p or 4K MP4 and audio tracks. No signup, no limits, no ads to install.",
+      "h1": "YouTube Video Downloader — HD MP4 in Seconds",
+      "hero_subtext": "Grab any public YouTube video, embed link or youtu.be short link as a clean MP4 file. Quality picker from 360p up to 4K, always the original stream URL.",
+      "badges": [
+        "Up to 4K",
+        "MP4 & WebM",
+        "No signup"
+      ],
+      "related": [
+        "youtube-shorts-downloader",
+        "youtube-mp3-downloader",
+        "facebook-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4",
+          "webm"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "opus"
+        ],
+        "max_height": 2160,
+        "quality_ladder": [
+          2160,
+          1440,
+          1080,
+          720,
+          480,
+          360
+        ]
+      },
+      "steps": [
+        {
+          "title": "Copy the YouTube URL",
+          "description": "Open the video, then tap Share → Copy link on mobile or copy the address bar on desktop. Both youtube.com/watch?v= and youtu.be/ links work."
+        },
+        {
+          "title": "Paste it into SsaveVideo",
+          "description": "Drop the link in the box above and hit the Paste button if your clipboard is already loaded. We read the manifest instantly and never touch the video file."
+        },
+        {
+          "title": "Pick quality & download",
+          "description": "Choose 4K, 1080p, 720p, 360p or audio only, then right-click the button and choose Save link as if you want a renamed file."
+        }
+      ],
+      "features": [
+        {
+          "title": "Original resolution, no re-encode",
+          "icon": "sparkles",
+          "description": "We hand you the exact CDN stream YouTube serves, so a 4K upload downloads as the same 4K file. No second compression pass, no quality loss, no waiting queue."
+        },
+        {
+          "title": "Video and audio in one tap",
+          "icon": "layers",
+          "description": "Prefer progressive MP4 with the audio track already merged, or take the audio-only stream for offline listening. Both are listed in the same result card."
+        },
+        {
+          "title": "Unlimited and free forever",
+          "icon": "infinity",
+          "description": "No account, no daily quota, no watermark burned into the file, no desktop app or browser extension. Open the page, paste, download — that is the whole product."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How do I download a YouTube video in 1080p?",
+          "answer": "Paste the video URL into the box above and press Download. SsaveVideo lists every quality the video is actually available in, so pick the 1080p MP4 row and your browser saves it directly from YouTube's CDN."
+        },
+        {
+          "question": "Is it legal to download YouTube videos with SsaveVideo?",
+          "answer": "Downloading a video you own, or one released under a licence that allows copying, is fine in most jurisdictions. Re-downloading copyrighted work without the rights holder's permission breaches YouTube's Terms of Service, so use this tool for your own content, Creative Commons material and public domain archives."
+        },
+        {
+          "question": "Does SsaveVideo add a watermark to the file?",
+          "answer": "No. We never re-encode or post-process media, so the saved file is byte-for-byte the stream the platform serves. There is no logo, no intro clip and no branding of any kind."
+        },
+        {
+          "question": "Why does my download fail on a private or age-restricted video?",
+          "answer": "SsaveVideo is logged out by design, so it can only see content that is public to anonymous visitors. Private, unlisted-with-restrictions, members-only and age-gated videos will return a clear permission error instead of a file."
+        },
+        {
+          "question": "Can I download YouTube MP3 audio with this?",
+          "answer": "Yes. Use the audio rows in the result card, or open our dedicated YouTube MP3 downloader, which defaults the picker to the highest-bitrate audio stream and hides the video rows."
+        },
+        {
+          "question": "Do I need to install an app or browser extension?",
+          "answer": "Nothing to install. SsaveVideo is a single web page that works in Chrome, Safari, Firefox, Edge and Brave on desktop and mobile, including Android and iPhone, where results download straight to the Files app."
+        }
+      ],
+      "i18n": {
+        "es": {
+          "meta_title": "Descargar vídeos de YouTube en MP4 HD y audio | SsaveVideo",
+          "meta_description": "Guarda cualquier vídeo público de YouTube en su resolución original, de 360p a 4K, o solo el audio. Sin registro, sin cola y sin recodificar nada.",
+          "h1": "Descargador de YouTube: MP4 HD en segundos",
+          "hero_subtext": "Enlace normal o youtu.be: obtén el MP4 exacto que reproduce YouTube, calidad a elegir y audio incluido."
+        },
+        "fr": {
+          "meta_title": "Télécharger une vidéo YouTube en MP4 HD avec SsaveVideo",
+          "meta_description": "Récupérez toute vidéo YouTube publique dans sa résolution d'origine, de 360p à 4K, ou seulement la piste audio. Sans compte et sans file d'attente.",
+          "h1": "Téléchargeur YouTube — MP4 HD en quelques secondes",
+          "hero_subtext": "Lien watch ou youtu.be : récupérez le MP4 exactement diffusé par YouTube, avec la qualité de votre choix."
+        },
+        "ar": {
+          "meta_title": "تنزيل فيديوهات يوتيوب بصيغة MP4 HD والصوت مجانًا",
+          "meta_description": "احفظ أي فيديو عام من يوتيوب بجودته الأصلية من 360p حتى 4K، أو احفظ الصوت وحده. بلا تسجيل وبلا إعادة ترميز وبلا انتظار في طابور.",
+          "h1": "أداة تنزيل يوتيوب — MP4 بدقة عالية في ثوانٍ",
+          "hero_subtext": "سواء كان الرابط طويلاً أو youtu.be، تحصل على ملف MP4 نفسه الذي يشغّله يوتيوب مع اختيار الجودة."
+        }
+      },
+      "gradient_hex": [
+        "#dc2626",
+        "#f97316"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "youtube-shorts",
+      "slug": "youtube-shorts-downloader",
+      "path": "/youtube-shorts-downloader",
+      "name": "YouTube Shorts",
+      "display_name": "YouTube Shorts",
+      "icon": "youtube",
+      "domains": [
+        "youtube.com",
+        "youtu.be"
+      ],
+      "url_placeholder": "https://www.youtube.com/shorts/aqz-KE-bpKQ",
+      "color_gradient": "bg-gradient-to-br from-red-600 via-fuchsia-600 to-indigo-600",
+      "soft_gradient": "bg-gradient-to-br from-red-50 via-fuchsia-50 to-indigo-50 dark:from-red-500/10 dark:via-fuchsia-500/10 dark:to-indigo-500/10",
+      "text_gradient": "bg-gradient-to-r from-red-600 to-fuchsia-600 bg-clip-text text-transparent",
+      "chip_class": "border-fuchsia-200 bg-fuchsia-50 text-fuchsia-700 hover:border-fuchsia-400 hover:text-fuchsia-800 dark:border-fuchsia-500/25 dark:bg-fuchsia-500/10 dark:text-fuchsia-300",
+      "button_class": "bg-gradient-to-r from-red-600 via-fuchsia-600 to-indigo-600 text-white shadow-lg shadow-fuchsia-600/25 hover:brightness-110",
+      "glow_class": "shadow-fuchsia-500/20",
+      "meta_title": "YouTube Shorts Downloader — No Watermark, MP4 | SsaveVideo",
+      "meta_description": "Save any YouTube Shorts clip as a clean 9:16 MP4 at up to 1080x1920 with no watermark. Paste the shorts link, tap download, done. Free and unlimited.",
+      "h1": "YouTube Shorts Downloader in Full-Height MP4",
+      "hero_subtext": "Paste a youtube.com/shorts link and keep the vertical clip exactly as uploaded — 9:16 framing, original bitrate, no overlay and no trimming to 16:9.",
+      "badges": [
+        "9:16 kept",
+        "No watermark",
+        "1080×1920"
+      ],
+      "related": [
+        "youtube-video-downloader",
+        "youtube-mp3-downloader",
+        "tiktok-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4",
+          "webm"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "opus"
+        ],
+        "max_height": 1920,
+        "quality_ladder": [
+          1920,
+          1080,
+          720
+        ]
+      },
+      "steps": [
+        {
+          "title": "Copy the Shorts link",
+          "description": "In the Shorts player tap the three dots or the Share arrow, then Copy link. The saved URL contains /shorts/ followed by the eleven-character video id."
+        },
+        {
+          "title": "Paste the link above",
+          "description": "Hit Paste to fill the field from your clipboard. SsaveVideo resolves the Shorts stream without downloading it, so results appear in roughly a second."
+        },
+        {
+          "title": "Download the vertical MP4",
+          "description": "Pick the highest MP4 row to keep 1080×1920, or take audio only if you just need the sound for a remix or reaction clip."
+        }
+      ],
+      "features": [
+        {
+          "title": "True vertical aspect ratio",
+          "icon": "phone",
+          "description": "The original 9:16 frame is preserved. No black pillarbox bars and no crop, so the file drops straight into Reels, TikTok or Status without editing."
+        },
+        {
+          "title": "Watermark free by design",
+          "icon": "shield",
+          "description": "Because we return the raw stream URL instead of remuxing it, there is no tool logo stamped in the corner and no metadata rewrite on your clip."
+        },
+        {
+          "title": "Works on Android and iPhone",
+          "icon": "bolt",
+          "description": "The layout is mobile-first, so you can copy in the YouTube app, paste here and save to your camera roll or Files app without leaving the browser."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can I download YouTube Shorts without a watermark?",
+          "answer": "Yes. SsaveVideo never overlays branding because it never re-encodes your file, so what you download is the same MP4 that YouTube streams. Any watermark you see elsewhere comes from tools that render the clip again on their servers."
+        },
+        {
+          "question": "What resolution do saved Shorts come in?",
+          "answer": "Whatever the creator uploaded, up to 1080×1920. The result card lists every resolution available for that clip, so if a Short was mastered in 720p we show 720p rather than pretending to have a better copy."
+        },
+        {
+          "question": "Why is my Shorts audio missing in the downloaded file?",
+          "answer": "Choose a progressive MP4 row rather than a video-only stream. Some high resolutions are published as separate video and audio tracks, and those rows are labelled video only so you know to take the merged option."
+        },
+        {
+          "question": "Can I reuse someone else's Short?",
+          "answer": "You may download it for personal offline viewing, but republishing someone else's clip needs their permission. Ask the creator first, and credit them when they agree — this is also required by every major platform's reuse policy."
+        },
+        {
+          "question": "Does the downloader work with youtu.be/shorts links?",
+          "answer": "Yes. Both the long youtube.com/watch?v= form and the short youtu.be form resolve to the same video id, and either is accepted in the input box above."
+        }
+      ],
+      "gradient_hex": [
+        "#dc2626",
+        "#a21caf"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "youtube-mp3",
+      "slug": "youtube-mp3-downloader",
+      "path": "/youtube-mp3-downloader",
+      "name": "YouTube MP3",
+      "display_name": "YouTube to MP3",
+      "icon": "music",
+      "domains": [
+        "youtube.com",
+        "youtu.be",
+        "music.youtube.com"
+      ],
+      "url_placeholder": "https://music.youtube.com/watch?v=dQw4w9WgXcQ",
+      "color_gradient": "bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600",
+      "soft_gradient": "bg-gradient-to-br from-emerald-50 via-white to-cyan-50 dark:from-emerald-500/10 dark:via-slate-950 dark:to-cyan-500/10",
+      "text_gradient": "bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent",
+      "chip_class": "border-emerald-200 bg-emerald-50 text-emerald-700 hover:border-emerald-400 hover:text-emerald-800 dark:border-emerald-500/25 dark:bg-emerald-500/10 dark:text-emerald-300",
+      "button_class": "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-600/25 hover:brightness-110",
+      "glow_class": "shadow-emerald-500/20",
+      "meta_title": "YouTube to MP3 Converter — 320kbps Audio Free | SsaveVideo",
+      "meta_description": "Convert YouTube links to high bitrate audio you can keep offline. Instant results, no upload queue, no registration and no ads playing in the background.",
+      "h1": "YouTube to MP3 — High-Bitrate Audio, Instantly",
+      "hero_subtext": "Turn any YouTube or YouTube Music link into the platform's own audio stream, listed by bitrate so you always take the best copy that actually exists.",
+      "badges": [
+        "Audio only",
+        "Best bitrate",
+        "No queue"
+      ],
+      "related": [
+        "youtube-video-downloader",
+        "youtube-shorts-downloader",
+        "youtube-video-downloader"
+      ],
+      "extraction": {
+        "audio_only": true,
+        "video_ext_priority": [
+          "mp4"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "opus",
+          "mp3"
+        ],
+        "max_height": 0,
+        "quality_ladder": []
+      },
+      "steps": [
+        {
+          "title": "Copy the music video link",
+          "description": "Any watch page works: youtube.com/watch, youtu.be or a music.youtube.com track link. Copy it from the Share sheet or the address bar."
+        },
+        {
+          "title": "Paste and press Get audio",
+          "description": "The extractor inspects the stream manifest only. Nothing is uploaded or transcoded on our side, which is why results come back almost immediately."
+        },
+        {
+          "title": "Choose your bitrate",
+          "description": "Take the top audio row for the highest bitrate available, or a lighter one for older phones and small data plans. Save it to your device and listen offline."
+        }
+      ],
+      "features": [
+        {
+          "title": "Highest audio the video holds",
+          "icon": "music",
+          "description": "We list every audio rendition with its real bitrate and container, so you never accept a lossy copy when the source had a better one waiting."
+        },
+        {
+          "title": "No ad-filled converter pages",
+          "icon": "shield",
+          "description": "Most free MP3 sites earn money with pop-unders, fake download buttons and push-notification traps. SsaveVideo is one clean form and a result list."
+        },
+        {
+          "title": "Great for lectures and podcasts",
+          "icon": "layers",
+          "description": "Commutes, flights and gyms: pull talk content, interviews and recorded lectures into your player and listen without burning mobile data on video."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Does SsaveVideo really produce MP3 files?",
+          "answer": "YouTube publishes audio as M4A and Opus streams, never as MP3. We give you the original stream so nothing is degraded by a second conversion, and virtually every player, car stereo and phone imports M4A directly. If you specifically need .mp3, open the downloaded file in any converter once — that step is deliberately not on our servers."
+        },
+        {
+          "question": "What is the highest audio quality I can get?",
+          "answer": "Typically up to 256 kbps for M4A and around 130-160 kbps for Opus, depending on the upload. The result card shows measured bitrate per row so you can compare instead of guessing."
+        },
+        {
+          "question": "Is it safe to convert YouTube links to audio here?",
+          "answer": "There is nothing to install and no executable to trick you into running, which removes the main risk of converter sites. Your browser talks only to ssavevideo.com; the media itself comes from the platform's own CDN over HTTPS."
+        },
+        {
+          "question": "Can I download whole playlists?",
+          "answer": "Batch mode is intentionally not offered: each extraction is one link, one video, so no single visitor can occupy the service. For an album or playlist, run the links one at a time."
+        },
+        {
+          "question": "Will it work with YouTube Music links?",
+          "answer": "Yes, music.youtube.com/watch links are supported the same way as normal watch pages. Official artist uploads are still protected by copyright, so keep downloads for your own offline listening."
+        }
+      ],
+      "gradient_hex": [
+        "#059669",
+        "#0891b2"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "tiktok",
+      "slug": "tiktok-video-downloader",
+      "path": "/tiktok-video-downloader",
+      "name": "TikTok",
+      "display_name": "TikTok",
+      "icon": "tiktok",
+      "domains": [
+        "tiktok.com",
+        "vm.tiktok.com",
+        "vt.tiktok.com",
+        "m.tiktok.com"
+      ],
+      "url_placeholder": "https://www.tiktok.com/@username/video/1234567890123456789",
+      "color_gradient": "bg-gradient-to-br from-cyan-400 via-slate-900 to-pink-500",
+      "soft_gradient": "bg-gradient-to-br from-cyan-50 via-white to-pink-50 dark:from-cyan-500/10 dark:via-slate-950 dark:to-pink-500/10",
+      "text_gradient": "bg-gradient-to-r from-cyan-500 to-pink-500 bg-clip-text text-transparent",
+      "chip_class": "border-cyan-200 bg-cyan-50 text-cyan-700 hover:border-cyan-400 hover:text-cyan-800 dark:border-cyan-500/25 dark:bg-cyan-500/10 dark:text-cyan-300",
+      "button_class": "bg-gradient-to-r from-cyan-500 to-pink-500 text-white shadow-lg shadow-pink-500/25 hover:brightness-110",
+      "glow_class": "shadow-cyan-500/20",
+      "meta_title": "TikTok Downloader — No Watermark HD MP4, Free & Fast",
+      "meta_description": "Download TikTok videos without the watermark in original HD. Paste a vm.tiktok or vt.tiktok link and save MP4 video plus audio, free and unlimited.",
+      "h1": "TikTok Downloader — Clean Videos, No Watermark",
+      "hero_subtext": "Save any public TikTok post, vm.tiktok.com short link or sound page as the original MP4. The clean stream is chosen over the stamped one, so you get the raw clip.",
+      "badges": [
+        "No watermark",
+        "Original HD",
+        "Audio included"
+      ],
+      "related": [
+        "instagram-video-downloader",
+        "youtube-shorts-downloader",
+        "threads-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4",
+          "webm"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "mp3"
+        ],
+        "max_height": 1080,
+        "prefer_clean_stream": true,
+        "quality_ladder": [
+          1080,
+          720,
+          540,
+          480
+        ]
+      },
+      "steps": [
+        {
+          "title": "Copy the TikTok link",
+          "description": "Tap Share, then Copy link. You get a vm.tiktok.com or vt.tiktok.com short URL — paste either that or the full @username/video link here."
+        },
+        {
+          "title": "Paste the link above",
+          "description": "SsaveVideo follows the redirect, asks TikTok for the media manifest and picks the watermark-free playback stream. No login and no app required."
+        },
+        {
+          "title": "Save the watermark-free MP4",
+          "description": "Press the MP4 button to keep video and sound together, or take the audio row if you only want the trending sound for an edit."
+        }
+      ],
+      "features": [
+        {
+          "title": "The clean stream, not the stamped one",
+          "icon": "shield",
+          "description": "TikTok serves both an overlay-encoded file and a raw one. We resolve the raw file, so the username handle and end-card watermark never reach your gallery."
+        },
+        {
+          "title": "Sound stays in sync",
+          "icon": "music",
+          "description": "Downloaded MP4s are the merged original, so the audio is already muxed — lip sync survives and you do not need to line up a separate sound file."
+        },
+        {
+          "title": "Short links supported",
+          "icon": "bolt",
+          "description": "vm.tiktok.com, vt.tiktok.com and m.tiktok.com redirects are all resolved server-side, so you never have to open the video first to reveal a longer URL."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How do I download TikTok videos without the watermark?",
+          "answer": "Paste the share link into the box above and press Download. SsaveVideo selects the clean MP4 endpoint that TikTok itself uses for playback, so the file you save has no username overlay and no scrolling end card."
+        },
+        {
+          "question": "Do I need a TikTok account to use this downloader?",
+          "answer": "No. Public videos are readable without authentication, and we deliberately do not support logging in. Private, friend-only or region-locked posts cannot be downloaded."
+        },
+        {
+          "question": "Why did my TikTok link fail to resolve?",
+          "answer": "The most common reasons are that the video was deleted or made private, the account is under 16 or region-restricted, or you pasted the profile URL instead of a specific video URL. Check the link in a normal browser tab first."
+        },
+        {
+          "question": "Can I download a TikTok sound as audio only?",
+          "answer": "Yes. The result card lists the original audio track separately, so you can save the song or voice-over without the video and keep your camera roll clean."
+        },
+        {
+          "question": "Is reposting downloaded TikToks allowed?",
+          "answer": "Downloading for personal backup or offline viewing is one thing; re-uploading someone else's video as your own is a copyright problem and usually breaches the platform rules. Ask for permission and credit the creator."
+        },
+        {
+          "question": "Does quality drop when I save from SsaveVideo?",
+          "answer": "No. We return the platform's stored rendition, typically 720p or 1080p for TikTok, with the same bitrate and codec. Nothing is trans-coded, so quality is exactly what the creator uploaded."
+        }
+      ],
+      "i18n": {
+        "es": {
+          "meta_title": "Descargar TikTok sin marca de agua en MP4 HD | Ssave",
+          "meta_description": "Guarda vídeos de TikTok sin la marca de agua y en su resolución original, incluso desde enlaces cortos vm.tiktok o vt.tiktok. Gratis, sin cuenta y sin app.",
+          "h1": "Descargador de TikTok: MP4 limpio sin marca de agua",
+          "hero_subtext": "Elegimos la versión limpia del stream que la app usa para reproducir, así que el archivo no lleva superposiciones."
+        },
+        "fr": {
+          "meta_title": "Télécharger TikTok sans filigrane en MP4 HD | SsaveVideo",
+          "meta_description": "Enregistrez une vidéo TikTok dans sa qualité d'origine et sans filigrane, même depuis un lien court vm.tiktok. Gratuit, sans compte ni application.",
+          "h1": "Téléchargeur TikTok — des vidéos propres, sans filigrane",
+          "hero_subtext": "Nous sélectionnons le flux sans surimpression utilisé par l'application : votre fichier reste intact."
+        },
+        "ar": {
+          "meta_title": "تنزيل تيك توك بدون علامة مائية بصيغة MP4 HD",
+          "meta_description": "احفظ فيديوهات تيك توك بجودتها الأصلية وبدون علامة مائية، حتى من الروابط المختصرة vm.tiktok أو vt.tiktok. مجاني وبلا حساب وبلا تطبيق.",
+          "h1": "أداة تنزيل تيك توك — فيديو نظيف بلا علامة مائية",
+          "hero_subtext": "نختار التدفق الأصلي الذي تستخدمه التطبيق للتشغيل، فلا تظهر أي شعارات فوق المقطع."
+        }
+      },
+      "gradient_hex": [
+        "#06b6d4",
+        "#ec4899"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "instagram",
+      "slug": "instagram-video-downloader",
+      "path": "/instagram-video-downloader",
+      "name": "Instagram",
+      "display_name": "Instagram",
+      "icon": "instagram",
+      "domains": [
+        "instagram.com",
+        "instagr.am"
+      ],
+      "url_placeholder": "https://www.instagram.com/reel/Cx1y2z3A4B5/",
+      "color_gradient": "bg-gradient-to-br from-amber-400 via-pink-600 to-purple-700",
+      "soft_gradient": "bg-gradient-to-br from-amber-50 via-pink-50 to-purple-50 dark:from-amber-500/10 dark:via-pink-500/10 dark:to-purple-500/10",
+      "text_gradient": "bg-gradient-to-r from-amber-500 via-pink-600 to-purple-600 bg-clip-text text-transparent",
+      "chip_class": "border-pink-200 bg-pink-50 text-pink-700 hover:border-pink-400 hover:text-pink-800 dark:border-pink-500/25 dark:bg-pink-500/10 dark:text-pink-300",
+      "button_class": "bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg shadow-purple-600/25 hover:brightness-110",
+      "glow_class": "shadow-pink-500/20",
+      "meta_title": "Instagram Downloader — Reels, Stories & Video MP4 HD",
+      "meta_description": "Save Instagram Reels, Story clips and in-feed videos as HD MP4. Paste a permalink into SsaveVideo and download instantly, free with no app install.",
+      "h1": "Instagram Reels, Stories & Video Downloader",
+      "hero_subtext": "One box for Reels, IGTV, carousels and Story clips: paste the permalink and get the MP4 that Instagram actually serves, at full resolution.",
+      "badges": [
+        "Reels",
+        "Stories",
+        "HD MP4"
+      ],
+      "related": [
+        "threads-video-downloader",
+        "tiktok-video-downloader",
+        "facebook-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "mp3"
+        ],
+        "max_height": 1920,
+        "quality_ladder": [
+          1920,
+          1080,
+          720,
+          540,
+          480
+        ]
+      },
+      "steps": [
+        {
+          "title": "Get the Instagram permalink",
+          "description": "Tap the three dots on a post or Reel and choose Link → Copy link. For Stories, open the Story, tap the three dots, then Copy link — the URL must point at one item, not a profile."
+        },
+        {
+          "title": "Paste it above",
+          "description": "SsaveVideo requests the media URL for that permalink. Only public accounts can be read; private profiles return a clear not-authorised message."
+        },
+        {
+          "title": "Download the MP4",
+          "description": "Pick the highest MP4 for posts and Reels. Multi-item carousels expose every video in the result list, so save them one by one."
+        }
+      ],
+      "features": [
+        {
+          "title": "Reels keep their vertical framing",
+          "icon": "phone",
+          "description": "Reels and Stories download as the same 9:16 file Instagram streams, ready to re-post on TikTok, Shorts or WhatsApp Status without cropping or black bars."
+        },
+        {
+          "title": "Private accounts stay private",
+          "description": "We never ask for your Instagram password and never proxy your session. Anything Instagram does not show a logged-out visitor simply is not downloadable here.",
+          "icon": "shield"
+        },
+        {
+          "title": "Carousel and multi-clip aware",
+          "icon": "layers",
+          "description": "A swipe post with several video pages returns one row per clip instead of only the first item, so you can pick exactly the segment you need."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can I download Instagram Reels in HD?",
+          "answer": "Yes. Paste the Reel's permalink above and choose the top MP4 row — Reels are usually stored at 1080×1920, and that is the rendition you receive because we never re-compress media."
+        },
+        {
+          "question": "How do I save an Instagram Story before it expires?",
+          "answer": "Open the Story, copy its link from the three-dot menu, paste it here and download within the 24-hour window. Once Instagram deletes the media the link no longer resolves and no tool can recover it."
+        },
+        {
+          "question": "Why can't I download a private Instagram video?",
+          "answer": "SsaveVideo has no login flow, which is what keeps your credentials out of third-party hands. Private posts, restricted and collab-only content require an authorised session, so they cannot be fetched here."
+        },
+        {
+          "question": "Do Instagram videos come with sound?",
+          "answer": "Yes. Instagram publishes progressive MP4s where the audio track is already muxed, so the file you save plays with sound on every device without a separate download."
+        },
+        {
+          "question": "Is downloading Instagram content permitted?",
+          "answer": "Saving your own posts and Reels for backup or editing is routine. Downloading other people's work and republishing it without permission is a copyright breach and violates Instagram's terms, so get consent first."
+        },
+        {
+          "question": "Does SsaveVideo support IGTV or long-form video?",
+          "answer": "Instagram folded IGTV into regular video posts, and any /p/ or /reel/ permalink pointing at a long-form upload resolves through the same flow, including multi-part series items when each part has its own link."
+        }
+      ],
+      "i18n": {
+        "es": {
+          "meta_title": "Descargar Instagram Reels, Stories y vídeos en MP4",
+          "meta_description": "Guarda Reels, Stories y publicaciones de Instagram en MP4 HD pegando el enlace directo. Sin inicio de sesión, sin extensiones y sin recodificar el vídeo.",
+          "h1": "Descargador de Reels, Stories y vídeos de Instagram",
+          "hero_subtext": "Un solo campo para Reels, clips de Story y carruseles: pega el enlace y descarga el MP4 que sirve Instagram."
+        },
+        "fr": {
+          "meta_title": "Télécharger Reels, Stories et vidéos Instagram en MP4",
+          "meta_description": "Enregistrez Reels, Stories et publications Instagram en MP4 HD en collant le lien direct. Sans connexion, sans extension et sans ré-encodage de la vidéo.",
+          "h1": "Téléchargeur Instagram — Reels, Stories et vidéos",
+          "hero_subtext": "Un seul champ pour les Reels, les Stories et les carrousels : collez le lien et récupérez le MP4 d'Instagram."
+        },
+        "ar": {
+          "meta_title": "تنزيل ريلز وستوريز وفيديوهات إنستغرام بصيغة MP4",
+          "meta_description": "احفظ ريلز الإنستغرام والستوري والمنشورات بصيغة MP4 HD بمجرد لصق الرابط المباشر. بلا تسجيل الدخول وبلا إضافات وبلا إعادة ترميز للفيديو.",
+          "h1": "أداة تنزيل إنستغرام — ريلز وستوريز وفيديوهات",
+          "hero_subtext": "حقل واحد للريلز والستوري والمنشورات المتعددة: الصق الرابط واحفظ ملف MP4 الأصلي."
+        }
+      },
+      "gradient_hex": [
+        "#f59e0b",
+        "#c026d3"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "facebook",
+      "slug": "facebook-video-downloader",
+      "path": "/facebook-video-downloader",
+      "name": "Facebook",
+      "display_name": "Facebook",
+      "icon": "facebook",
+      "domains": [
+        "facebook.com",
+        "fb.watch",
+        "m.facebook.com",
+        "web.facebook.com"
+      ],
+      "url_placeholder": "https://www.facebook.com/PageName/videos/1234567890123456/",
+      "color_gradient": "bg-gradient-to-br from-blue-600 via-blue-500 to-sky-400",
+      "soft_gradient": "bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-blue-500/10 dark:via-slate-950 dark:to-sky-500/10",
+      "text_gradient": "bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent",
+      "chip_class": "border-blue-200 bg-blue-50 text-blue-700 hover:border-blue-400 hover:text-blue-800 dark:border-blue-500/25 dark:bg-blue-500/10 dark:text-blue-300",
+      "button_class": "bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-lg shadow-blue-600/25 hover:brightness-110",
+      "glow_class": "shadow-blue-500/20",
+      "meta_title": "Facebook Video Downloader — HD Watch Clips & Reels",
+      "meta_description": "Download Facebook Watch clips, Reels and public timeline videos in HD MP4. Supports fb.watch short links. No login, no extension, no watermark ever.",
+      "h1": "Facebook Video, Watch & Reels Downloader",
+      "hero_subtext": "Save public Facebook videos, Watch episodes and Reels as MP4 — including fb.watch share links — with the HD rendition chosen automatically.",
+      "badges": [
+        "fb.watch links",
+        "Watch & Reels",
+        "Up to 1080p"
+      ],
+      "related": [
+        "instagram-video-downloader",
+        "youtube-video-downloader",
+        "reddit-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "mp3"
+        ],
+        "max_height": 1080,
+        "quality_ladder": [
+          1080,
+          720,
+          540,
+          360,
+          240
+        ]
+      },
+      "steps": [
+        {
+          "title": "Copy the video link",
+          "description": "Under a Facebook video tap Share → Copy link, or copy the address bar on desktop. fb.watch short links are fine and expand automatically."
+        },
+        {
+          "title": "Paste it into the box",
+          "description": "The extractor resolves Facebook's tokenised CDN URLs for you. Public pages, groups set to public and Watch episodes all behave the same way."
+        },
+        {
+          "title": "Take the HD MP4",
+          "description": "Facebook offers both HD and SD progressive files. Choose HD when you plan to edit, SD when you just need a small offline copy."
+        }
+      ],
+      "features": [
+        {
+          "title": "Handles expiring CDN tokens",
+          "icon": "clock",
+          "description": "Facebook signs every media URL with a short-lived token. We resolve it at click time, so the link you get is fresh rather than a stale one that 403s on you."
+        },
+        {
+          "title": "Watch, Reels and live replays",
+          "icon": "layers",
+          "description": "Native timeline uploads, Watch episodes, Reels and finished live videos that Facebook kept on the timeline all extract through the same form."
+        },
+        {
+          "title": "No extension required",
+          "icon": "shield",
+          "description": "Plenty of Facebook downloaders are browser add-ons that read everything you browse. SsaveVideo is a web page: nothing to install, nothing to review."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How do I download a Facebook video in HD?",
+          "answer": "Copy the video URL, paste it above and press Download. Where Facebook publishes a 720p or 1080p progressive MP4 you will see it labelled HD in the result card; SD rows are listed underneath for smaller files."
+        },
+        {
+          "question": "Can SsaveVideo download private or friends-only videos?",
+          "answer": "No. The service never logs into Facebook, so content behind a login, in a private group or restricted to friends is out of reach. Only videos Facebook serves to a logged-out visitor can be fetched."
+        },
+        {
+          "question": "Does an fb.watch link work?",
+          "answer": "Yes. Facebook's short share domain is followed to the real video permalink before extraction, so you can paste the short link exactly as the Share sheet gives it to you."
+        },
+        {
+          "question": "Why does my download have no audio?",
+          "answer": "That usually means the source is a Facebook silent autoplay clip, which is encoded without a sound track on purpose. Pick the row marked with audio when several renditions exist, and if none has one the original post simply has no sound."
+        },
+        {
+          "question": "Can I download a Facebook Reel to my phone?",
+          "answer": "Yes — open this page in your phone's browser, paste the Reel link and long-press the MP4 button to save. The file lands in your downloads or Files app ready to share."
+        }
+      ],
+      "gradient_hex": [
+        "#1d4ed8",
+        "#38bdf8"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "reddit",
+      "slug": "reddit-video-downloader",
+      "path": "/reddit-video-downloader",
+      "name": "Reddit",
+      "display_name": "Reddit",
+      "icon": "reddit",
+      "domains": [
+        "reddit.com",
+        "redd.it",
+        "v.redd.it",
+        "old.reddit.com"
+      ],
+      "url_placeholder": "https://www.reddit.com/r/subreddit/comments/abc123/title/",
+      "color_gradient": "bg-gradient-to-br from-orange-500 via-red-500 to-rose-600",
+      "soft_gradient": "bg-gradient-to-br from-orange-50 via-white to-rose-50 dark:from-orange-500/10 dark:via-slate-950 dark:to-rose-500/10",
+      "text_gradient": "bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent",
+      "chip_class": "border-orange-200 bg-orange-50 text-orange-700 hover:border-orange-400 hover:text-orange-800 dark:border-orange-500/25 dark:bg-orange-500/10 dark:text-orange-300",
+      "button_class": "bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg shadow-orange-600/25 hover:brightness-110",
+      "glow_class": "shadow-orange-500/20",
+      "meta_title": "Reddit Video Downloader — MP4 With Audio Merged In",
+      "meta_description": "Save Reddit posts as one MP4 with the audio already merged, fixing the silent v.redd.it problem. Paste a post link and download the clip free.",
+      "h1": "Reddit Video Downloader With Merged Audio",
+      "hero_subtext": "Reddit stores video and audio as separate DASH streams, which is why saved clips are often silent. We select the combined file so sound is included.",
+      "badges": [
+        "Audio merged",
+        "No silent files",
+        "GIFV aware"
+      ],
+      "related": [
+        "x-video-downloader",
+        "youtube-video-downloader",
+        "pinterest-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "mp3"
+        ],
+        "max_height": 1080,
+        "require_progressive": true,
+        "quality_ladder": [
+          1080,
+          720,
+          540,
+          360
+        ]
+      },
+      "steps": [
+        {
+          "title": "Copy the Reddit post link",
+          "description": "Tap Share → Copy link under the post, or copy the URL bar on old.reddit.com. A /comments/ permalink with the ID is all we need."
+        },
+        {
+          "title": "Paste it above",
+          "description": "SsaveVideo reads the post's media block and looks for the progressive file that already contains both video and audio tracks."
+        },
+        {
+          "title": "Download the complete MP4",
+          "description": "Take the merged MP4 for a clip that plays with sound everywhere. Video-only rows, when present, are labelled so you can build a custom edit."
+        }
+      ],
+      "features": [
+        {
+          "title": "Audio and video in one file",
+          "icon": "layers",
+          "description": "Reddit's player fetches a video stream and an audio stream separately, and naive downloaders save the mute one. We prefer the combined rendition so your clip has sound."
+        },
+        {
+          "title": "GIFV and no-sound posts handled",
+          "icon": "bolt",
+          "description": "Animated GIFV posts are looped video without an audio track at all. We detect that and simply hand you the MP4 loop rather than offering a pointless audio row."
+        },
+        {
+          "title": "Keeps the original resolution",
+          "icon": "sparkles",
+          "description": "Reddit caps uploads, so most clips top out at 1080p. You get that cap untouched, including the DASH fallback when a subreddit re-hosted a lower-resolution master."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Why are Reddit videos silent and how does SsaveVideo fix it?",
+          "answer": "Reddit ships video and audio as separate adaptive streams, so saving the visible file alone gives you a mute clip. SsaveVideo looks for the progressive rendition that already muxes both tracks and puts that first in the result list."
+        },
+        {
+          "question": "Can I download a Reddit video with sound to my iPhone?",
+          "answer": "Yes. Paste the post link in Safari, tap the merged MP4 row and choose Save to Files. The audio is inside the file, so it plays in Photos and VLC without extra steps."
+        },
+        {
+          "question": "Does this work for NSFW or age-restricted subreddits?",
+          "answer": "Only if the media is reachable without an authenticated session. Reddit gates age-restricted communities behind login, and SsaveVideo never logs in on your behalf, so those posts return a permission error."
+        },
+        {
+          "question": "Can I download a Reddit GIFV as a real MP4?",
+          "answer": "Yes. A GIFV is an H.264 loop, and downloading the MP4 instead of the animated container gives you a far smaller file that works in every editor and messaging app."
+        },
+        {
+          "question": "Is it allowed to reuse Reddit clips?",
+          "answer": "The original footage usually belongs to whoever filmed it, not to the account that posted it. Ask the OP before republishing, especially for monetised channels, and credit them where the licence requires it."
+        }
+      ],
+      "gradient_hex": [
+        "#ea580c",
+        "#e11d48"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "pinterest",
+      "slug": "pinterest-video-downloader",
+      "path": "/pinterest-video-downloader",
+      "name": "Pinterest",
+      "display_name": "Pinterest",
+      "icon": "pinterest",
+      "domains": [
+        "pinterest.com",
+        "pin.it",
+        "pinimg.com"
+      ],
+      "url_placeholder": "https://www.pinterest.com/pin/1234567890123456789/",
+      "color_gradient": "bg-gradient-to-br from-rose-600 via-red-600 to-red-700",
+      "soft_gradient": "bg-gradient-to-br from-rose-50 via-white to-red-50 dark:from-rose-500/10 dark:via-slate-950 dark:to-red-500/10",
+      "text_gradient": "bg-gradient-to-r from-rose-600 to-red-600 bg-clip-text text-transparent",
+      "chip_class": "border-rose-200 bg-rose-50 text-rose-700 hover:border-rose-400 hover:text-rose-800 dark:border-rose-500/25 dark:bg-rose-500/10 dark:text-rose-300",
+      "button_class": "bg-gradient-to-r from-rose-600 to-red-600 text-white shadow-lg shadow-rose-600/25 hover:brightness-110",
+      "glow_class": "shadow-rose-500/20",
+      "meta_title": "Pinterest Video Downloader — MP4 for Pins & Idea Pins",
+      "meta_description": "Save Pinterest video pins and Idea Pins as MP4 on your device. Paste the pin URL and get a direct download button. No signup, no watermark, free.",
+      "h1": "Pinterest Video & Idea Pin Downloader",
+      "hero_subtext": "Keep the recipe, DIY walkthrough or product clip you pinned: paste the pin URL and download the MP4 behind it instead of relying on Pinterest to host it.",
+      "badges": [
+        "Pins",
+        "Idea Pins",
+        "Direct MP4"
+      ],
+      "related": [
+        "instagram-video-downloader",
+        "tiktok-video-downloader",
+        "youtube-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "mp3"
+        ],
+        "max_height": 1080,
+        "quality_ladder": [
+          1080,
+          720,
+          480
+        ]
+      },
+      "steps": [
+        {
+          "title": "Copy the pin link",
+          "description": "Open the pin, tap the share arrow and choose Copy link, or copy pinterest.com/pin/ID/ from the address bar on desktop."
+        },
+        {
+          "title": "Paste the pin URL above",
+          "description": "SsaveVideo reads the pin metadata and returns the hosted video file. Static image pins have no MP4, and we tell you that plainly instead of failing."
+        },
+        {
+          "title": "Download the MP4",
+          "description": "Multi-page Idea Pins list every video page in order, so you can save the ones you need or all of them one tap after another."
+        }
+      ],
+      "features": [
+        {
+          "title": "Idea Pin pages listed in order",
+          "icon": "layers",
+          "description": "Idea Pins are sequences of media items. We keep the original page order in the result list so the intro, steps and closing clip stay readable."
+        },
+        {
+          "title": "Save before a pin disappears",
+          "icon": "clock",
+          "description": "Creators unpublish pins and boards quietly. A local MP4 keeps your inspiration folder, brand board or mood reel working even after the source is gone."
+        },
+        {
+          "title": "Video and audio, not a silent loop",
+          "icon": "music",
+          "description": "Pinned how-to videos keep their voice-over in the merged MP4, so the narration you saved it for is still there when you open it offline."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How do I download a video from Pinterest?",
+          "answer": "Copy the pin's link, paste it into the box above and press Download. If the pin contains video, the MP4 rows appear and you can save them straight to your device."
+        },
+        {
+          "question": "Can Idea Pins be saved as one file?",
+          "answer": "Each Idea Pin page is stored as its own media item, so SsaveVideo lists every video page separately. Combine them in any editor if you want a single continuous file."
+        },
+        {
+          "question": "Why is there no download button for my pin?",
+          "answer": "Most Pinterest pins are images rather than videos. For those, the pin has no media stream to list — save the image directly from Pinterest, since our tool only handles video pins."
+        },
+        {
+          "question": "Do I need a Pinterest account to use this?",
+          "answer": "No. Public pins are readable without signing in, and we do not offer a login flow at all, so your Pinterest credentials never pass through a third party."
+        },
+        {
+          "question": "Can I use downloaded Pinterest videos commercially?",
+          "answer": "Saving for personal reference is fine; commercial reuse needs the rights holder's licence. Pinterest pins are frequently repinned from third parties, so trace the original creator before you publish."
+        }
+      ],
+      "gradient_hex": [
+        "#e11d48",
+        "#b91c1c"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "threads",
+      "slug": "threads-video-downloader",
+      "path": "/threads-video-downloader",
+      "name": "Threads",
+      "display_name": "Threads",
+      "icon": "threads",
+      "domains": [
+        "threads.net",
+        "threads.com"
+      ],
+      "url_placeholder": "https://www.threads.net/@username/post/Cx1y2z3A4B5",
+      "color_gradient": "bg-gradient-to-br from-slate-900 via-slate-800 to-neutral-600",
+      "soft_gradient": "bg-gradient-to-br from-slate-100 via-white to-zinc-100 dark:from-slate-500/10 dark:via-slate-950 dark:to-zinc-500/10",
+      "text_gradient": "bg-gradient-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent dark:from-white dark:to-slate-400",
+      "chip_class": "border-slate-300 bg-slate-100 text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:border-white/15 dark:bg-white/5 dark:text-slate-200",
+      "button_class": "bg-gradient-to-r from-slate-900 to-slate-700 text-white shadow-lg shadow-slate-900/25 hover:brightness-125 dark:from-white dark:to-slate-200 dark:text-slate-900",
+      "glow_class": "shadow-slate-500/20",
+      "meta_title": "Threads Video Downloader — Save Posts Without Watermark",
+      "meta_description": "Download video from Meta Threads posts in clean MP4. Paste a threads.net or threads.com post link and save the clip — no app, no account needed.",
+      "h1": "Threads Video Downloader for Post Clips",
+      "hero_subtext": "Threads has no built-in save button. Paste a post link here and get the video the app plays: full resolution, no watermark, ready to archive or edit.",
+      "badges": [
+        "No watermark",
+        "threads.com",
+        "HD MP4"
+      ],
+      "related": [
+        "instagram-video-downloader",
+        "tiktok-video-downloader",
+        "x-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "mp3"
+        ],
+        "max_height": 1080,
+        "prefer_clean_stream": true,
+        "quality_ladder": [
+          1080,
+          720,
+          540,
+          480
+        ]
+      },
+      "steps": [
+        {
+          "title": "Copy the Threads post link",
+          "description": "Tap the three dots under the post and choose Link → Copy link. You need the URL of the specific post, not the profile page."
+        },
+        {
+          "title": "Paste it above",
+          "description": "Threads shares its media backend with Instagram, so the same permalink extractor resolves the MP4 that the Threads app streams."
+        },
+        {
+          "title": "Save the clean MP4",
+          "description": "Download the highest row for editing or archiving. Posts with several clips list one button per clip so you keep only what you need."
+        }
+      ],
+      "features": [
+        {
+          "title": "Fills the missing save button",
+          "icon": "bolt",
+          "description": "Threads lets you share and screen-record, but it never offered a video export. This page turns any public post link into a downloadable file."
+        },
+        {
+          "title": "No watermark burned in",
+          "icon": "shield",
+          "description": "Screen recordings add the handle and the phone UI. You get the underlying media instead, so the clip stays usable in your own edits."
+        },
+        {
+          "title": "Multi-clip posts supported",
+          "icon": "layers",
+          "description": "Carousel-style Threads posts with up to twenty media items return each video separately, in order, with its resolution and size shown."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How do I download a video from Threads?",
+          "answer": "Long-press or tap the three dots on the post, copy its link, paste it into the box above and press Download. The MP4 rows appear in a second and saving them puts the clip on your device."
+        },
+        {
+          "question": "Does threads.com work as well as threads.net?",
+          "answer": "Yes. Both domains point at the same post, and SsaveVideo accepts either permalink format as well as the shortened share links the mobile app copies."
+        },
+        {
+          "question": "Can I save Threads video on iPhone?",
+          "answer": "Yes — tap and hold the download button in Safari and choose Download Linked File, then find the MP4 in the Files app under Downloads. No TestFlight profile or shortcut is required."
+        },
+        {
+          "question": "Why is my Threads post not downloading?",
+          "answer": "Private accounts and posts that were deleted cannot be read. The post must be public and reachable in a browser where you are signed out; if the link 404s there, it will not extract here either."
+        },
+        {
+          "question": "Is it okay to repost a Threads video I downloaded?",
+          "answer": "Download it for reference or backup, and ask the author before publishing it elsewhere. Threads content is owned by whoever posted it, regardless of the platform it sits on."
+        }
+      ],
+      "gradient_hex": [
+        "#0f172a",
+        "#525252"
+      ],
+      "on_gradient_text": "#ffffff"
+    },
+    {
+      "key": "twitter",
+      "slug": "x-video-downloader",
+      "path": "/x-video-downloader",
+      "name": "X (Twitter)",
+      "display_name": "X / Twitter",
+      "icon": "x",
+      "domains": [
+        "x.com",
+        "twitter.com",
+        "t.co",
+        "fxtwitter.com",
+        "vxtwitter.com"
+      ],
+      "url_placeholder": "https://x.com/user/status/1234567890123456789",
+      "color_gradient": "bg-gradient-to-br from-slate-800 via-slate-900 to-sky-500",
+      "soft_gradient": "bg-gradient-to-br from-slate-100 via-white to-sky-50 dark:from-slate-500/10 dark:via-slate-950 dark:to-sky-500/10",
+      "text_gradient": "bg-gradient-to-r from-slate-900 to-sky-600 bg-clip-text text-transparent dark:from-white dark:to-sky-400",
+      "chip_class": "border-slate-300 bg-slate-100 text-slate-700 hover:border-sky-400 hover:text-sky-700 dark:border-white/15 dark:bg-white/5 dark:text-slate-200",
+      "button_class": "bg-gradient-to-r from-slate-900 to-sky-600 text-white shadow-lg shadow-sky-600/25 hover:brightness-115 dark:from-white dark:to-sky-200 dark:text-slate-900",
+      "glow_class": "shadow-sky-500/20",
+      "meta_title": "X (Twitter) Video Downloader — HD MP4, No Watermark",
+      "meta_description": "Download X and Twitter videos in HD MP4 or lower bitrates for small files. Paste a status link from x.com or twitter.com and save the clip instantly.",
+      "h1": "X & Twitter Video Downloader in HD MP4",
+      "hero_subtext": "Any status link becomes the platform's own progressive MP4. Choose the highest quality for archiving or the smallest for messaging and email attachments.",
+      "badges": [
+        "x.com & twitter.com",
+        "Up to 1080p",
+        "GIF fallback"
+      ],
+      "related": [
+        "reddit-video-downloader",
+        "youtube-video-downloader",
+        "threads-video-downloader"
+      ],
+      "extraction": {
+        "video_ext_priority": [
+          "mp4"
+        ],
+        "audio_ext_priority": [
+          "m4a",
+          "mp3"
+        ],
+        "max_height": 1920,
+        "quality_ladder": [
+          1920,
+          1280,
+          854,
+          640
+        ]
+      },
+      "steps": [
+        {
+          "title": "Copy the tweet link",
+          "description": "Tap the share arrow on the post and choose Copy link, giving an x.com/user/status/ID address. Twitter.com links and t.co shortened links work too."
+        },
+        {
+          "title": "Paste it above",
+          "description": "Public statuses can be read through X's embed endpoint, which is why no password, API key or developer account is ever involved here."
+        },
+        {
+          "title": "Pick a bitrate",
+          "description": "X lists several progressive MP4s per clip. Take the top row for quality, or a lower one when you need the file to fit a message attachment limit."
+        }
+      ],
+      "features": [
+        {
+          "title": "Every bitrate, side by side",
+          "icon": "layers",
+          "description": "X encodes posts at up to 1920 wide plus a bitrate ladder for mobile. We show each with its real file size, so you pick knowingly instead of gambling."
+        },
+        {
+          "title": "GIF posts handled",
+          "icon": "bolt",
+          "description": "Animated GIF uploads on X are actually muted MP4 loops. They download as a normal video file, which is smaller than the GIF and plays everywhere."
+        },
+        {
+          "title": "No login, no API keys",
+          "icon": "shield",
+          "description": "Since X locked down its API, many downloaders ask for your credentials or a paid token. SsaveVideo only uses the public embed data, so nothing sensitive is involved."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How do I download a video from X or Twitter?",
+          "answer": "Copy the post link with the share button, paste it into the field above and press Download. SsaveVideo returns the MP4 renditions X serves for that status and you pick the size you want."
+        },
+        {
+          "question": "Does it work for protected accounts?",
+          "answer": "No. Tweets from locked accounts are only visible to approved followers, and this service never signs in. If a browser cannot see the post while logged out, the downloader cannot either."
+        },
+        {
+          "question": "Can I save a GIF tweet as a video?",
+          "answer": "Yes. X stores uploaded GIFs as muted MP4 loops, and downloading that loop gives you a much smaller, better-compressed file than the animated GIF it replaced."
+        },
+        {
+          "question": "Why do I get an error on some X links?",
+          "answer": "Deleted, restricted, sensitive-flagged or NSFW-restricted statuses and direct quotes of removed posts cannot be extracted. Age-gated media also needs an authenticated session, which SsaveVideo deliberately does not have."
+        },
+        {
+          "question": "Are X Spaces recordings downloadable?",
+          "answer": "Only if the host left a public replay that a logged-out browser can open. Expired and subscriber-only Spaces are not retrievable, and we do not bypass those gates."
+        },
+        {
+          "question": "Is it legal to save a Twitter video?",
+          "answer": "Saving for personal use is widely tolerated; republishing is not automatically allowed. Video belongs to whoever filmed it, so get permission before embedding it in your own content."
+        }
+      ],
+      "gradient_hex": [
+        "#0f172a",
+        "#0284c7"
+      ],
+      "on_gradient_text": "#ffffff"
+    }
+  ],
+  "guides": [
+    {
+      "key": "no-watermark",
+      "slug": "guides/how-to-download-videos-without-watermark",
+      "path": "/guides/how-to-download-videos-without-watermark",
+      "name": "No-watermark guide",
+      "icon": "shield",
+      "meta_title": "How to Download Videos Without a Watermark | SsaveVideo",
+      "meta_description": "A downloader watermark means your file was re-encoded. Here is why the overlay appears, what it costs in bitrate, and how a tool avoids it entirely.",
+      "h1": "How to Download Videos Without a Watermark",
+      "intro": "A watermark on a downloaded video is not proof of anything — it is a second render. This guide explains where the overlay comes from, why it costs you quality, and what a genuine watermark-free download actually means.",
+      "sections": [
+        {
+          "title": "Where the logo comes from",
+          "body": "A downloader that stamps your file has to decode the source, composite its branding and encode the result again. That means the video passes through a server, a GPU or your own browser twice, and every encoder introduces loss. The logo is a marketing decision paid for with your bitrate."
+        },
+        {
+          "title": "Why the platform watermark is different",
+          "body": "TikTok and a few others publish two renditions of the same upload: one with the scrolling handle baked into the master, and a clean one used by their own players. Tools that only know the public share URL often grab the stamped copy. SsaveVideo asks the extractor for the media manifest and prefers the unbranded stream that the platform itself plays."
+        },
+        {
+          "title": "The architecture that avoids it",
+          "body": "Our server never downloads media. It resolves the signed CDN address for a format and hands that URL to your browser, which pulls the bytes from the platform. No re-encode happens anywhere in the chain, so the file is identical to the original stream, minus nothing and plus nothing."
+        },
+        {
+          "title": "When you still cannot avoid it",
+          "body": "If a clip only exists as a burned-in version — some cross-posted TikTok edits and watermarked stock previews — no tool can remove it without cropping or inpainting. In those cases the honest answer is to reach out to the creator for the master file rather than shipping a degraded crop."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is a watermark-free download the same quality?",
+          "answer": "Yes, because it is the same bytes. Since nothing is re-encoded, you keep the source resolution, codec and bitrate exactly as the platform published them."
+        },
+        {
+          "question": "Can I remove a watermark from a video I already saved?",
+          "answer": "Only badly. Cropping changes the composition, blurring and inpainting leave artefacts, and any fix re-encodes the file. Re-downloading the original clean stream is a better outcome than editing the stamped copy."
+        },
+        {
+          "question": "Do I need a premium plan to avoid watermarks here?",
+          "answer": "No. There are no plans and no upsells on SsaveVideo. Every output on every supported platform is watermark-free because the pipeline has no way to add branding."
+        }
+      ],
+      "related_platforms": [
+        "tiktok",
+        "youtube-shorts",
+        "instagram"
+      ]
+    },
+    {
+      "key": "video-vs-audio-tracks",
+      "slug": "guides/video-and-audio-separate-tracks",
+      "path": "/guides/video-and-audio-separate-tracks",
+      "name": "Separate tracks explained",
+      "icon": "layers",
+      "meta_title": "Silent Video Download? Fix Separate A/V Tracks | SsaveVideo",
+      "meta_description": "Adaptive streaming keeps picture and sound as two separate tracks, so saved clips end up mute. Here is how to pick the merged file in one click.",
+      "h1": "Your Downloaded Video Has No Sound — Here Is Why",
+      "intro": "One of the most common complaints about any downloader is a silent MP4. The cause is almost never the tool: it is how adaptive streaming splits a master into picture and sound.",
+      "sections": [
+        {
+          "title": "How adaptive streaming splits media",
+          "body": "YouTube, Reddit, TikTok and Facebook publish DASH or HLS manifests where video and audio are distinct representations. The player fetches both and merges them on your device in real time, which lets a viewer change quality without restarting and lets the platform encode a silent 4K video stream more cheaply."
+        },
+        {
+          "title": "Why naive downloaders fail",
+          "body": "A downloader that simply takes the first URL in the manifest usually gets the picture-only representation. The file is valid, plays instantly and has no audio track at all — which is why the same clip looks fine in the browser and mute on your phone."
+        },
+        {
+          "title": "Progressive formats are the fix",
+          "body": "Most platforms also publish a progressive rendition, where the encoder muxed audio and video into one container. Selecting it, as Reddit's profile in our schema forces, gives you a single file that plays everywhere. SsaveVideo sorts results by combined tracks first and explicitly labels anything video-only."
+        },
+        {
+          "title": "When merging really is required",
+          "body": "Some high resolutions exist only as split streams, and combining them needs ffmpeg and a server-side pass over the media. That costs bandwidth, storage and time, and it is the reason most free tools cap quality at 720p. We choose speed and original fidelity instead: you keep the separate stream, and a desktop editor such as HandBrake or ffmpeg can merge it locally whenever you want."
+        }
+      ],
+      "faq": [
+        {
+          "question": "How do I check whether a file has an audio track?",
+          "answer": "Right-click the file and open Properties or Get Info, or drag it into VLC and check Codec Information. If no audio stream is listed, the source row was video-only."
+        },
+        {
+          "question": "Can I merge video and audio myself without losing quality?",
+          "answer": "Yes. ffmpeg -i video.mp4 -i audio.m4a -c copy merged.mp4 remuxes both streams without re-encoding, so it finishes in seconds with zero generation loss."
+        },
+        {
+          "question": "Why is 4K only offered as a separate video stream?",
+          "answer": "At that bitrate the platform wants bandwidth to scale with the viewer's connection, so picture and sound are negotiated independently. Merging them server-side for every request would be the most expensive operation a download service can run."
+        }
+      ],
+      "related_platforms": [
+        "reddit",
+        "youtube",
+        "twitter"
+      ]
+    },
+    {
+      "key": "safe-download-habits",
+      "slug": "guides/is-it-safe-to-download-videos-online",
+      "path": "/guides/is-it-safe-to-download-videos-online",
+      "name": "Safety guide",
+      "icon": "shield",
+      "meta_title": "Is It Safe to Download Videos Online? | SsaveVideo",
+      "meta_description": "Most risk on converter sites is not the video but the traps around it: fake installers, push prompts and credential forms. Here are the checks that matter.",
+      "h1": "Is It Safe to Download Videos Online?",
+      "intro": "Most risk on converter sites is not the video — it is everything wrapped around it. Here are the checks that matter before you paste a link anywhere.",
+      "sections": [
+        {
+          "title": "Never run the installer it offers",
+          "body": "If a site claims your download will start faster after installing a helper, downloader or browser extension, close the tab. A web page has no legitimate reason to ship you an executable, and that binary is how adware and infostealers reach a machine."
+        },
+        {
+          "title": "Watch for push-notification traps",
+          "body": "Sites that show a button reading Allow notifications are buying the right to put ads on your desktop hours later. No download flow needs notifications; deny them and clear the permission in your browser settings if you already clicked."
+        },
+        {
+          "title": "Check what the domain can read",
+          "body": "A downloader that asks you to log in to the source platform, or to paste cookies or an API token, is collecting credentials and a session that outlives the download. A tool that works only on public links is not merely limited — it is safer by construction."
+        },
+        {
+          "title": "Prefer HTTPS direct links, and use them fast",
+          "body": "Signed CDN addresses expire in minutes by design, which protects the platform but also means a copied link is a temporary artefact, not a permanent one. Save to your device rather than forwarding raw links, and never paste a signed link into a public chat where anyone can follow it."
+        },
+        {
+          "title": "Respect the copyright line",
+          "body": "Safety is also legal: downloading your own uploads and openly licensed media is unremarkable, while republishing someone else's footage is not. Keep a licence note with anything you archive for work so provenance is documented later."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Does SsaveVideo store the links I paste?",
+          "answer": "Extraction runs in memory and the resolved media URLs are discarded once the request ends. The only thing retained is an anonymised error counter used to keep the service up, and no media bytes ever touch our disk."
+        },
+        {
+          "question": "Is HTTPS enough to make a download safe?",
+          "answer": "Transport encryption is the baseline, not the whole answer. What matters is that the file is a media container served by a known content delivery network and not a signed executable from a random host."
+        },
+        {
+          "question": "Can a website infect my phone through a video download?",
+          "answer": "Barely, and usually only with help. iOS and Android sandbox downloads from the browser, so the realistic risk is a social step: installing a profile, a side-loaded app or an update prompt the site invents. Decline every such request and the download itself is fine."
+        }
+      ],
+      "related_platforms": [
+        "youtube",
+        "facebook",
+        "pinterest"
+      ]
+    },
+    {
+      "key": "quality-guide",
+      "slug": "guides/1080p-vs-4k-which-quality-to-choose",
+      "path": "/guides/1080p-vs-4k-which-quality-to-choose",
+      "name": "Choosing quality",
+      "icon": "sparkles",
+      "meta_title": "1080p or 4K: Which Quality to Download | SsaveVideo",
+      "meta_description": "Resolution alone decides nothing. Compare bitrate, codec and file size, and learn which rendition to take for editing, casting or an offline trip.",
+      "h1": "1080p, 720p or 4K: Picking the Right Quality",
+      "intro": "Downloading the highest number is nearly always wrong. Resolution is one input to file size, and the codec that carries it decides whether the clip looks good or clogs your storage.",
+      "sections": [
+        {
+          "title": "Resolution is not quality",
+          "body": "A 2160p stream at 8 Mbps looks worse than a 1080p stream at 12 Mbps, because detail is limited by data per second, not pixels per frame. This is why SsaveVideo prints the measured bitrate and container next to every row: two files with the same label can differ by a factor of three."
+        },
+        {
+          "title": "Codecs: H.264 versus VP9 and AV1",
+          "body": "MP4 with H.264 plays on everything, including older consoles, TVs and editors. VP9 and AV1 in WebM are far more efficient at the same quality but need hardware support, and some editors refuse or transpose them badly. For archiving take the most efficient stream; for editing and casting take MP4."
+        },
+        {
+          "title": "Rule of thumb by use case",
+          "body": "Phone viewing and offline travel: 720p MP4. Cutting into a project: highest MP4 you can store. Reference archive of a tutorial: 1080p or 4K regardless of size. Audio-only: the top audio row, since a talk track needs no picture at all and the saving is enormous."
+        },
+        {
+          "title": "Reading the result card",
+          "body": "Each row shows label, container, height, frame rate, bitrate and approximate size, and rows marked merged already contain audio. Where the platform caps uploads — TikTok at 1080p, Reddit at 1080p — you will never see a fake 4K option, because we only list what genuinely exists for that video."
+        }
+      ],
+      "faq": [
+        {
+          "question": "Does a bigger file always mean better quality?",
+          "answer": "No. Beyond the point where the codec stops discarding detail, extra size is usually duplicate information. Match the rendition to the source: a 720p upload never becomes better by taking a padded 1080p representation."
+        },
+        {
+          "question": "Which format should I choose for editing?",
+          "answer": "MP4 with H.264 for maximum compatibility in Premiere, Final Cut and DaVinci Resolve. HEVC in MP4 is lighter on disk but asks more of your CPU, and WebM support still varies between editors."
+        },
+        {
+          "question": "How much space does an hour of video take?",
+          "answer": "Roughly 450 MB at 1 Mbps, 1.1 GB at 2.5 Mbps and 4.3 GB at 10 Mbps, since one byte is eight bits and an hour is 3600 seconds. SsaveVideo shows an estimate per row so you can judge before committing."
+        }
+      ],
+      "related_platforms": [
+        "youtube",
+        "facebook"
+      ]
+    }
+  ]
+}

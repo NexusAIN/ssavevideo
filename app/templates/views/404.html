@@ -1,0 +1,22 @@
+{#- Real 404 page, not a bare status: it keeps the visitor inside the funnel and
+    hands the crawler a `noindex` signal so probe traffic cannot create soft-404
+    inventory in Search Console. Rendered with the home PageSpec so the chrome,
+    the platform grid and the internal links are all still there. -#}
+{% extends "base.html" %}
+{% from "partials/sections.html" import platforms_grid %}
+{% from "partials/icons.html" import icon %}
+
+{% block content %}
+  <section class="{{ page.soft_gradient }} relative overflow-hidden">
+    <div class="ss-container py-16 text-center sm:py-24">
+      <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-rose-500 shadow-lg ring-1 ring-slate-200 dark:bg-white/10 dark:text-rose-300 dark:ring-white/10">
+        {{ icon('alert', 'w-6 h-6') }}
+      </span>
+      <p class="mt-6 text-[.6875rem] font-bold uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">HTTP 404</p>
+      <h1 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{{ t('notfound.title') }}</h1>
+      <p class="mx-auto mt-3 max-w-lg text-[.95rem] leading-relaxed text-slate-600 dark:text-slate-300">{{ t('notfound.subtitle') }}</p>
+      <a href="{{ home_path }}" class="ss-btn ss-btn-primary mt-7">{{ icon('download', 'w-4 h-4') }}{{ t('notfound.home') }}</a>
+    </div>
+  </section>
+  {{ platforms_grid(all_platforms, t, page.path) }}
+{% endblock %}

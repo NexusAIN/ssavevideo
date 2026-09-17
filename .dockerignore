@@ -1,0 +1,21 @@
+# Keep the build context small and reproducible: the image is built from source,
+# never from a laptop's environment.
+.git
+.gitignore
+.venv
+venv
+env
+__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+.ruff_cache
+node_modules
+npm-debug.log*
+assets-src/tailwind.input.css.map
+tests
+README.md
+Dockerfile
+.dockerignore
+*.md
+!data/*.md

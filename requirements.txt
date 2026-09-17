@@ -1,0 +1,13 @@
+# ssavevideo.com — runtime dependencies (Python 3.11/3.12)
+#
+# There is deliberately no ffmpeg and no download library here: the service only
+# resolves URLs, it never fetches or converts media (see app/extraction.py).
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.30,<1.0
+jinja2>=3.1,<4.0
+pydantic>=2.7,<3.0
+yt-dlp>=2025.1.15          # pure-python extractor; update it in lockstep with platform changes
+
+# Build / asset tooling (NOT needed at runtime — app/static/css/app.css is committed)
+#   pillow>=10    -> python scripts/build_og_images.py
+#   node + tailwindcss@3 -> npm run build:css

@@ -1,0 +1,37 @@
+{#-
+  THE programmatic-SEO template. Home, all 10 tool pages and every localized
+  mirror render through this one file; only `page` (a PageSpec built from
+  data/seo_platforms.json) differs. That is the whole point of the architecture:
+  adding a platform is a JSON edit, and the page flow below is guaranteed
+  identical for indexability, crawl depth and Core Web Vitals.
+
+  Vertical flow (mirrors the layout that ranks well in this SERP):
+    hero + form + result card → related tools → supported platforms → how-to
+    → feature highlights → FAQ → closing CTA.
+-#}
+{% extends "base.html" %}
+{% from "partials/sections.html" import how_to, feature_cards, related_tools, platforms_grid, faq_list, final_cta %}
+{% from "partials/icons.html" import icon %}
+
+{% block content %}
+  {% include "partials/hero.html" %}
+
+  {#- Proof strip: four claims, four icons, zero JavaScript. -#}
+  <div class="border-y border-slate-200/70 bg-white/70 backdrop-blur dark:border-white/10 dark:bg-white/[.02]">
+    <ul class="ss-container grid grid-cols-2 divide-slate-200/70 py-0 dark:divide-white/10 sm:grid-cols-4 sm:divide-x">
+      {% for pair in [[t('badge.free'), 'check'], [t('badge.nolimit'), 'infinity'], [t('badge.nostore'), 'shield'], [t('badge.hdsupport'), 'hd']] %}
+        <li class="flex items-center justify-center gap-2 py-3 text-center text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-300">
+          <span class="text-indigo-600 dark:text-indigo-300">{{ icon(pair[1], 'w-4 h-4') }}</span>
+          <span>{{ pair[0] }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {{ related_tools(page.related, t, page.path) }}
+  {{ platforms_grid(all_platforms, t, page.path) }}
+  {{ how_to(page.steps, t, page.color_gradient) }}
+  {{ feature_cards(page.features, t) }}
+  {{ faq_list(page.faq, t) }}
+  {{ final_cta(t, home_path, page) }}
+{% endblock %}

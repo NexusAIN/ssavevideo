@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{#-
+  Base document shell for every view (home, tool, guide, legal, 404).
+
+  Technical SEO contract implemented here, in one place:
+    • canonical tag (absolute, from Settings.site_url — never from Host header)
+    • Open Graph + Twitter cards, incl. og:locale / og:locale:alternate
+    • full hreflang alternate set + x-default, emitted as <link> tags AND as
+      HTTP `Link:` headers (both are wired from app/main.py)
+    • JSON-LD graph: WebApplication (price 0 USD) + FAQPage + BreadcrumbList
+    • robots directives, theme-color for light and dark, webmanifest, icons
+  Nothing here is injected by JavaScript: Googlebot and LLM crawlers receive a
+  complete document.
+-#}
+<html lang="{{ locale.code }}" dir="{{ locale.dir }}" class="ss-theme">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  {% set seo_title = title_override | default('', true) or page.meta_title %}
+  {% set seo_desc = description_override | default('', true) or page.meta_description %}
+
+  <title>{{ seo_title }}</title>
+  <meta name="description" content="{{ seo_desc }}">
+  {#- A 404 or any page the caller flagged passes an explicit override; the
+      default comes from the PageSpec so a tool page is always indexable. -#}
+  {% if robots_override | default('', true) %}
+    <meta name="robots" content="{{ robots_override }}">
+  {% else %}
+    <meta name="robots" content="{{ page.robots }}">
+  {% endif %}
+  <meta name="keywords" content="{{ page.keywords | join(', ') }}">
+  <link rel="canonical" href="{{ canonical }}">
+
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="{{ store.site.theme_color_light }}">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="{{ store.site.theme_color_dark }}">
+  <meta name="color-scheme" content="light dark">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="icon" href="{{ favicon }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/static/img/logo.svg">
+  <link rel="manifest" href="/manifest.webmanifest">
+
+  {# ---------- hreflang: every locale + x-default, from the locale catalog ---------- #}
+  {% for alt in alternates %}
+    <link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}">
+  {% endfor %}
+  {% if not alternates %}
+    <link rel="alternate" hreflang="{{ locale.hreflang }}" href="{{ canonical }}">
+  {% endif %}
+
+  {# ---------- Open Graph / Twitter ---------- #}
+  <meta property="og:type" content="{{ 'article' if page.kind == 'guide' else 'website' }}">
+  <meta property="og:site_name" content="{{ store.site.brand }}">
+  <meta property="og:title" content="{{ seo_title }}">
+  <meta property="og:description" content="{{ seo_desc }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ og_image }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ page.h1 }}">
+  <meta property="og:locale" content="{{ locale.og_locale_tag }}">
+  {#- og:locale:alternate lists the OTHER languages of this same content; including
+      the page's own locale (a common mistake) makes the set self-contradictory. -#}
+  {% for loc in locales %}
+    {% if loc.code != locale.code %}
+      <meta property="og:locale:alternate" content="{{ loc.og_locale_tag }}">
+    {% endif %}
+  {% endfor %}
+  {% if page.kind == 'guide' %}
+    <meta property="article:published_time" content="{{ store.updated.strftime('%Y-%m-%dT%H:%M:%SZ') }}">
+    <meta property="article:modified_time" content="{{ now.strftime('%Y-%m-%dT%H:%M:%SZ') }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ssavevideo">
+  <meta name="twitter:title" content="{{ seo_title }}">
+  <meta name="twitter:description" content="{{ seo_desc }}">
+  <meta name="twitter:image" content="{{ og_image }}">
+  <meta name="twitter:image:alt" content="{{ page.h1 }}">
+
+  {# ---------- JSON-LD (data block, so a script-src CSP never touches it) ---------- #}
+  {% for block in json_ld %}
+    <script type="application/ld+json">{{ block | tojson }}</script>
+  {% endfor %}
+
+  <link rel="stylesheet" href="/static/css/app.css">
+  {#- Synchronous, external and 300 bytes: applies the stored theme before the
+      first paint, which is how we avoid a flash without an inline script. -#}
+  <script src="/static/js/theme.js"></script>
+  <script src="/static/js/app.js" defer></script>
+  {% block head %}{% endblock %}
+</head>
+<body class="min-h-screen bg-slate-50 font-sans text-slate-900 antialiased selection:bg-indigo-500/25 dark:bg-slate-950 dark:text-slate-100">
+  <a href="#ss-main" class="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white">{{ t('a11y.skip') }}</a>
+
+  {% include "partials/header.html" %}
+
+  <main id="ss-main">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+</body>
+</html>
